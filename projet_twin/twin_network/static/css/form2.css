@@ -1,0 +1,33 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+h1{
+  
+    font-size: 70px;
+    color: white;
+    margin-left: 50px;
+    
+    margin-top: 220px;
+    position: absolute;
+    text-align: center;
+    
+    
+}
+div{
+    background-color: #126DA6;
+    width: 650px;
+    height: 700px;
+
+}
+.form2{
+    background-color: #126DA6;
+    margin-left: 670px;
+    margin-top: -200px;
+    position: absolute;
+   
+}
