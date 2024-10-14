@@ -1,33 +1,204 @@
-
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: "Mochiy Pop P One", sans-serif;
 }
-
+body{
+    margin: 0;
+}
 h1{
   
-    font-size: 70px;
     color: white;
-    margin-left: 50px;
-    
-    margin-top: 220px;
-    position: absolute;
+    font-size: 80px;
     text-align: center;
+    margin-top: 190px;
+    position: absolute;
+    margin-left: 100px;
     
     
 }
 div{
     background-color: #126DA6;
     width: 650px;
-    height: 700px;
+    height: 706px;
 
 }
+
 .form2{
-    background-color: #126DA6;
-    margin-left: 670px;
-    margin-top: -200px;
+    margin-left: 850px;
+    margin-top: -600px;
+    width: 400px;
+    height: 500px;
+}
+.CREATION{
+    background-color: white;
+    border-radius: 50px;
+    width: 300px;
+    text-align: center;
+    
+    color: #126DA6;
+    margin-top: 20px;
     position: absolute;
-   
+    margin-left: 50px;
+    background-color: #FFFFFF;
+    color: #126DA6;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    
+
+}
+.NIVEAU{
+    color: white;
+    position: absolute;
+    margin-top: 180px;
+    margin-left: 40px;
+}
+.mdp{
+    color: white;
+    position: absolute;
+    margin-top: 260px;
+    margin-left: 40px;
+ 
+}
+.CONFIRMER{
+    
+    color: white;
+    position: absolute;
+    margin-top: 340px;
+    margin-left: 40px;
+}
+.ALUMNI{
+    
+    color: white;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 40px;
+
+}
+.line{
+    width:320px ;
+    height: 5px;
+    background-color: white;
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 40px;
+    border-radius: 50px;
+}
+.line1{
+    width:320px ;
+    height: 5px;
+    background-color: white;
+    position: absolute;
+    margin-top: 240px;
+    margin-left: 40px;
+    border-radius: 50px;
+}
+.oui{
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 100px;
+}
+.non{
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 180px;
+}
+#oui{
+    position: absolute;
+    margin-top: 123px;
+    margin-left: 70px;
+    color: white;
+
+}
+#non{
+    position: absolute;
+    margin-top: 123px;
+    margin-left: 140px;
+    color: white;
+
+}
+.l1{
+    color: white;
+    position: absolute;
+    margin-top: 208px;
+    margin-left: 40px;
+}
+.l2{
+    color: white;
+    position: absolute;
+    margin-top: 208px;
+    margin-left: 140px;
+}
+
+.l3{
+    color: white;
+    position: absolute;
+    margin-top: 208px;
+    margin-left: 250px;
+
+}
+#l1{
+    color: white;
+    position: absolute;
+    margin-top: 215px;
+    margin-left: 120px;
+
+}
+#l2{
+    color: white;
+    position: absolute;
+    margin-top: 215px;
+    margin-left: 220px;
+}
+#l3{
+    color: white;
+    position: absolute;
+    margin-top: 215px;
+    margin-left: 330px;
+
+}
+.mdp1{
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 40px;
+    width: 320px;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 5px white;
+
+}
+.cmdp{
+    position: absolute;
+    margin-top: 380px;
+    margin-left: 40px;
+    width: 320px;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 3px white;
+    border-bottom: solid 5px white
+}
+button{
+    background-color: white;
+    border-radius: 50px;
+    width: 250px;
+    text-align: center;
+    height: 50px;
+    color: #126DA6;
+    margin-top: 420px;
+    position: absolute;
+    margin-left: 70px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+
+    
+
+}
+button:hover {
+    background-color: #e6e6e6;
 }
