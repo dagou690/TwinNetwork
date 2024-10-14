@@ -49,12 +49,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
+import os
+
 ROOT_URLCONF = 'projet_twin.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'projet_twin/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +70,17 @@ TEMPLATES = [
         },
     },
 ]
+import os
+
+# Paramètres pour les fichiers statiques
+STATIC_URL = '/static/'
+
+# Chemin vers le répertoire static
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'projet_twin/static')]
+
+# Si vous avez des fichiers statiques spécifiques aux applications, vous pouvez les inclure ici
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'app_name/static')]
+
 
 WSGI_APPLICATION = 'projet_twin.wsgi.application'
 
@@ -115,7 +130,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+MEDIA_URL = '/image/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'projet_twin/image')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
