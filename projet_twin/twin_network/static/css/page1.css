@@ -1,10 +1,14 @@
-/* page1.css */
-body {
-    font-family: Arial, sans-serif;
+/* Réinitialisation générale */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f0f8ff; /* AliceBlue : fond clair */
-    color: #333; /* Texte sombre pour la lisibilité */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* bleu clair */
+    color: #333;
 }
 
 header {
@@ -12,115 +16,150 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #1e90ff; /* DeepSkyBlue : bleu TIC */
-    padding: 15px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    color: white;
+    padding: 20px 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo img {
-    width: 100px; /* Taille du logo */
+header .logo img {
+    width: 100px; /* Ajoute une taille au logo lorsqu'il sera disponible */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin-left: 20px;
+    gap: 20px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
     background-color: #87cefa; /* Bleu clair au survol */
+    transform: scale(1.1);
 }
 
+/* Style de la section principale */
 main {
-    padding: 50px;
+    padding: 20px;
 }
 
 .description-filière {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
-.description-filière .image img {
-    width: 50%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.twin-definition {
-    width: 45%;
-    padding: 20px;
-    background-color: #e6f7ff; /* Bleu très doux pour le texte descriptif */
-    border-left: 5px solid #1e90ff; /* Bordure gauche en bleu TIC */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.description-filière img {
+    width: 100%;
+    height: auto;
+    margin-right: 20px;
     border-radius: 10px;
 }
 
-.twin-definition p {
+.description-filière p {
+    font-size: 18px;
     line-height: 1.6;
 }
 
-.respo-twin {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 50px;
+/* Présentation des personnes */
+.description.de.personnes {
+    margin-bottom: 40px;
 }
 
-.respo-twin p {
-    font-size: 1.1rem;
-    background-color: #e6f7ff; /* Fond léger pour le texte du responsable */
+.Presentation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e0f7ff; /* fond légèrement bleu */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 
-.photo-respo-twin img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.Presentation img {
+    width: 200px;
+    height: auto;
+    margin-left: 20px;
+    border-radius: 10px;
 }
 
+.Presentation p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    max-width: 70%;
+}
+
+/* Pied de page */
 footer {
-    background-color: #1e90ff;
-    color: white;
     text-align: center;
     padding: 15px 0;
+    background-color: #007acc;
+    color: white;
     position: relative;
     bottom: 0;
     width: 100%;
-    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Media queries pour rendre la page responsive */
+/* Responsiveness: pour les petits écrans */
 @media (max-width: 768px) {
-    .description-filière, .respo-twin {
+    .description-filière {
         flex-direction: column;
-        text-align: center;
     }
 
-    .description-filière .image img, .twin-definition, .respo-twin p {
+    .description-filière img {
+        margin-bottom: 20px;
+    }
+
+    .Presentation {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .Presentation img {
+        margin: 20px 0 0 0;
+    }
+
+    .Presentation p {
+        max-width: 100%;
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+}
+
+/* Responsiveness: pour très petits écrans (mobiles) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    header nav ul {
+        padding: 0;
+    }
+
+    .description-filière img {
         width: 100%;
     }
 
-    .respo-twin {
-        margin-top: 30px;
+    .Presentation img {
+        width: 100%;
     }
 }
+
