@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* bleu clair */
+    background-color: #6098c9; /* bleu clair */
     color: #333;
 }
 
@@ -15,7 +15,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1e90ff; /* DeepSkyBlue : bleu TIC */
+    background-color: #126DA6;/* DeepSkyBlue : bleu TIC */
     padding: 20px 40px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -63,8 +63,9 @@ main {
 }
 
 .description-filière p {
-    font-size: 18px;
+    font-size: 25px;
     line-height: 1.6;
+    color: rgb(15, 15, 17);
 }
 
 /* Présentation des personnes */
@@ -101,7 +102,7 @@ main {
 footer {
     text-align: center;
     padding: 15px 0;
-    background-color: #007acc;
+    background-color: #126DA6;
     color: white;
     position: relative;
     bottom: 0;
