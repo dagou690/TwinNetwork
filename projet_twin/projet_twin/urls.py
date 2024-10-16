@@ -14,12 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+"from django.contrib import admin"
 from django.urls import path
 from . import views
 
-
-
 urlpatterns = [
     path('page1/', views.page1, name='page1'),
+    path('form/', views.creation_compte , name='form'),  # Assure-toi que cette vue est bien redirigée ici
+    path('form2/', views.form2 , name='form2'),
 ]

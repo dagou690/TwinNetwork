@@ -76,7 +76,7 @@ label {
     color: #FFFFFF;
 }
 
-input[type="text"], input[type="email"] , input[ type="number"]{
+input[type="text"], input[type="email"] , input[type="number"]{
     width: 100%;
     padding: 8px;
     border: none;
@@ -104,4 +104,9 @@ button {
 
 button:hover {
     background-color: #e6e6e6;
+}
+.error-nom{
+    color:red;
+    position: absolute;
+    
 }

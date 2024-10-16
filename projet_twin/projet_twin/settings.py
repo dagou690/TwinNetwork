@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     'projet_twin'
 ]
 
 MIDDLEWARE = [
@@ -88,12 +89,19 @@ WSGI_APPLICATION = 'projet_twin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# settings.py
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # Use MySQL
+        'NAME': 'projet_twin',  # The name of your database
+        'USER': 'twin_user',  # MySQL username
+        'PASSWORD': '1972',  # MySQL password
+        'HOST': 'localhost',  # Or the IP address of your MySQL server
+        'PORT': '3306',  # Default MySQL port
     }
 }
+
 
 
 # Password validation
