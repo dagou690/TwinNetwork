@@ -10,38 +10,60 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/form2.css' %}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
-        </style>
+    </style>
 </head>
 <body>
     <div>
-        <h1>TWIN <br>
-        NETWORK</h1>
+        <h1>TWIN <br> NETWORK</h1>
     </div>
     <div class="form2">
-        <form action="">
+        <!-- Action ajoutée pour la soumission du formulaire -->
+        <form method="POST"  >
+            {% csrf_token %}
             <label for="" class="CREATION"> CREATION DE COMPTE</label>
+            <label for="" class="ALUMNI">ALUMNI</label>
+            <!-- Alumni -->
             <label for="oui" id="oui">oui</label>
-            <input type="radio" class="oui">
-            <label for="oui" id="non">non</label>
-            <input type="radio" class="non">
+            <input type="radio" class="oui {% if form.alumni.errors %}is-invalid{% endif %}" name="alumni" value="oui" {% if form.alumni.value == 'oui' %} checked {% endif %}>
+            <label for="non" id="non">non</label>
+            <input type="radio" class="non {% if form.alumni.errors %}is-invalid{% endif %}" name="alumni" value="non" {% if form.alumni.value == 'non' %} checked {% endif %}>
+            <ul class="text-danger">
+                {{ form.alumni.errors }}
+                </ul>
+       
             <section class="line"></section>
-            <label for="almuni" class="ALUMNI">ALUMNI?</label>
-            <section class="line1"></section>
+
+            <!-- Niveau -->
             <label for="" class="NIVEAU">NIVEAU</label>
             <label for="" class="l1">licence1</label>
-            <input type="radio" id="l1">
+            <input type="radio" id="l1" name="niveau" value="L1" class="l1 {% if form.niveau.errors %}is-invalid{% endif %}" {% if form.niveau.value == 'L1' %} checked {% endif %}>
             <label for="" class="l2">licence2</label>
-            <input type="radio" id="l2">
+            <input type="radio" id="l2" name="niveau" value="L2" class="l2 {% if form.niveau.errors %}is-invalid{% endif %}" {% if form.niveau.value == 'L2' %} checked {% endif %}>
             <label for="" class="l3">licence3</label>
-            <input type="radio" id="l3">
-            <label for=""class="mdp">MOT DE PASSE </label>
-            <input type="password" class="mdp1">
+            <input type="radio" id="l3" name="niveau" value="L3" class="l3 {% if form.niveau.errors %}is-invalid{% endif %}" {% if form.niveau.value == 'L3' %} checked {% endif %}>
+            <section class="line1"></section>
+                <ul class="text-danger1">
+                    {{ form.niveau.errors }}
+                    </ul>
+           
+
+            <!-- Mot de passe -->
+            <label for="" class="mdp">MOT DE PASSE</label>
+            <input type="password" class="mdp1 {% if form.mot_de_passe.errors %}is-invalid{% endif %}" name="mot_de_passe">
+            <ul class="text-danger2">
+                {{ form.mot_de_passe.errors }}
+                </ul>
+       
+            <!-- Confirmer mot de passe -->
             <label for="" class="CONFIRMER">CONFIRMER</label>
-            <input type="password" class="cmdp">
-            <button type="submit">se connecter</button>
-              
+            <input type="password" class="cmdp {% if form.confirmer_mdp.errors %}is-invalid{% endif %}" name="confirmer_mdp">
+            <ul class="text-danger3">
+                {{ form.confirmer_mdp.errors }}
+                </ul>
+       
+            
+            <button type="submit">Se connecter</button>
         </form>
     </div>
-    
 </body>
 </html>

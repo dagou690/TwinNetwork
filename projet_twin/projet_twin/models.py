@@ -8,9 +8,9 @@ class Utilisateur(models.Model):
     prenom = models.CharField(max_length=100, validators=[
         RegexValidator(r'^[a-zA-Z ]+$', 'Le prénom ne doit contenir que des lettres.')
     ])
-    email = models.EmailField(unique=True)  # Validation automatique de l'email
+    email = models.EmailField(unique=True )  # Validation automatique de l'email
     contact = models.CharField(max_length=10, validators=[
-        RegexValidator(r'^07\d{8}$', 'Le contact doit être un numéro valide de Côte d\'Ivoire commençant par 07.')
+        RegexValidator(r'^07\d{8}$', 'le numero n\'est pas valide')
     ])
 
     alumni = models.BooleanField(default=False)  # True si "Oui", False si "Non"

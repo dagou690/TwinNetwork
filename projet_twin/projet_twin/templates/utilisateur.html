@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class= logo>
+        <img alt="logo des twin " src="/projet_twin/static/image/TWIN-removebg-preview.png" class="logo" > <!--pas encore de logo-->
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Publications</h1>
+        </div>
+
+        <div class="publication">
+            <div class="user-info">
+                <div class="user-icon"></div>
+                <span>Utilisateur 1</span>
+                <div class="menu">
+                    <span class="dots" onclick="toggleMenu(this)">&#x22EE;</span>
+                    <ul class="dropdown">
+                        <li>Modifier</li>
+                        <li>Supprimer</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="image-placeholder">Publication d'image ou de vidéos</div>
+                <div class="description">Description de la publication et explication</div>
+            </div>
+        </div>
+
+        <div class="publication">
+            <div class="user-info">
+                <div class="user-icon"></div>
+                <span>Utilisateur 2</span>
+                <div class="menu">
+                    <span class="dots" onclick="toggleMenu(this)">&#x22EE;</span>
+                    <ul class="dropdown">
+                        <li>Modifier</li>
+                        <li>Supprimer</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="image-placeholder">Publication d'image ou de vidéos</div>
+                <div class="description">Description de la publication et explication</div>
+            </div>
+        </div>
+
+        <div class="publication">
+            <div class="user-info">
+                <div class="user-icon"></div>
+                <span>Utilisateur 2</span>
+                <div class="menu">
+                    <span class="dots" onclick="toggleMenu(this)">&#x22EE;</span>
+                    <ul class="dropdown">
+                        <li>Modifier</li>
+                        <li>Supprimer</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="image-placeholder">Publication d'image ou de vidéos</div>
+                <div class="description">Description de la publication et explication</div>
+            </div>
+        </div>
+    </div>
+    <button id="fileButton" >PUBLIER </button>
+    <input type="file" id="fileInput" style="display: none;" accept="image/*,video/*">
+    
+    <script>
+        document.getElementById('fileButton').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+    </script>
+
+    <script>
+        function toggleMenu(el) {
+            el.nextElementSibling.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

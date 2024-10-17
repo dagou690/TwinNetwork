@@ -21,7 +21,12 @@ header {
 }
 
 header .logo img {
-    width: 100px; /* Ajoute une taille au logo lorsqu'il sera disponible */
+    width: 250px; /* Ajoute une taille au logo lorsqu'il sera disponible */
+    position: absolute;
+    height: 250px;
+    margin-top: -140px;
+    
+
 }
 
 nav ul {
@@ -162,4 +167,10 @@ footer {
         width: 100%;
     }
 }
+.utilisateur{
 
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: brown;
+}

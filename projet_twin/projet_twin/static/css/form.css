@@ -98,8 +98,8 @@ button {
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    top: 100px
-   
+    top: 100px;
+    margin-top:13px;
 }
 
 button:hover {
@@ -108,5 +108,7 @@ button:hover {
 .error-nom{
     color:red;
     position: absolute;
-    
+    font-size: 10px;
+    margin-top: -5px;
+
 }

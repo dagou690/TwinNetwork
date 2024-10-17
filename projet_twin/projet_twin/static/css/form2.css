@@ -162,26 +162,25 @@ div{
     margin-left: 330px;
 
 }
-.mdp1{
+.mdp1, .cmdp {
     position: absolute;
-    margin-top: 300px;
+    margin-top: 290px;
     margin-left: 40px;
     width: 320px;
-    background-color: transparent;
+    background-color: transparent; /* Enlève le fond par défaut */
     border: none;
     border-bottom: solid 5px white;
-
+    outline: none;
 }
 .cmdp{
-    position: absolute;
-    margin-top: 380px;
-    margin-left: 40px;
-    width: 320px;
-    background-color: transparent;
-    border: none;
-    border-bottom: solid 3px white;
-    border-bottom: solid 5px white
+    margin-top: 375px;
 }
+
+.mdp1:focus, .cmdp:focus {
+    background-color: transparent; /* Enlève le fond quand l'input est sélectionné */
+    border-color: white; /* La couleur de la bordure peut être changée ici si tu veux la mettre en surbrillance */
+}
+
 button{
     background-color: white;
     border-radius: 50px;
@@ -189,7 +188,7 @@ button{
     text-align: center;
     height: 50px;
     color: #126DA6;
-    margin-top: 420px;
+    margin-top: 425px;
     position: absolute;
     margin-left: 70px;
     border: none;
@@ -201,4 +200,34 @@ button{
 }
 button:hover {
     background-color: #e6e6e6;
+}
+.mdp1:focus, .cmdp:focus {
+    background-color: transparent; /* Enlève le fond lors du focus */
+    border-color: white; /* Garde la bordure blanche lors du focus */
+    outline: none; /* Pas de bordure de focus par défaut */
+}
+/* Formulaire d'erreurs */
+.text-danger{
+    color:red;
+    position: absolute;
+    font-size: 10px;
+    margin-top: 160px;
+}
+.text-danger1{
+    color:red;
+    position: absolute;
+    font-size: 10px;
+    margin-top: 245px;
+}
+.text-danger2{
+    color:red;
+    position: absolute;
+    font-size: 10px;
+    margin-top: 325px;
+}
+.text-danger3{
+    color:red;
+    position: absolute;
+    font-size: 10px;
+    margin-top: 405px;
 }

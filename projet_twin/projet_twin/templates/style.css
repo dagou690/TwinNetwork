@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #126DA6;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.publication {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.menu {
+    position: relative;
+}
+
+.dots {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+    border-radius: 4px;
+}
+
+.dropdown li {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.dropdown li:hover {
+    background-color: #f4f4f4;
+}
+
+.show {
+    display: block;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-placeholder {
+    background-color: #ccc;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.description {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 5px;
+}
+button{
+    width:100px;
+    height: 50px;
+    background-color: #126DA6;
+    border: none;
+    box-shadow: 4px 3px 10px;
+    border-radius: 10px;
+    margin-left:680px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #005b99; /* Couleur lors du survol */
+}
+.logo img {
+    width: 300px; /* Ajoute une taille au logo lorsqu'il sera disponible */
+    position: absolute;
+    height: 300px;
+    margin-top: -130px;
+    
+
+}
+

@@ -145,3 +145,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'projet_twin/image')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# settings.py
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Assurez-vous que l'option de session est correctement configurée
+SESSION_COOKIE_NAME = 'sessionid'  # Le nom du cookie de session
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Si activé, expire lorsque l'utilisateur ferme son navigateur
+SESSION_COOKIE_AGE = 3600  # Durée d'expiration de la session (1 heure)
