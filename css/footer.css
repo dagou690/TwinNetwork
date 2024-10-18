@@ -1,0 +1,52 @@
+/******* COLORS *******/
+.color-1 { color: #01161E; } /* rgba(1,22,30,1) */
+.color-2 { color: #124559; } /* rgba(18,69,89,1) */
+.color-3 { color: #598392; } /* rgba(89,131,146,1) */
+.color-4 { color: #AEC3B0; } /* rgba(174,195,176,1) */
+.color-5 { color: #EFF6E0; } /* rgba(239,246,224,1) */
+
+.bgcolor-1 { background-color: #01161E; color: #fff; }
+.bgcolor-1.bg-transp { background-color: rgba(1,22,30,.6); }
+.bgcolor-2 { background-color: #ff0000; color: #fff; }
+.bgcolor-2.bg-transp { background-color: rgba(18,69,89,.7); }
+.bgcolor-3 { background-color: #124559; color: #fff; }
+.bgcolor-4 { background-color: #04cdff; color: #212529; }
+.bgcolor-5 { background-color: #EFF6E0; color: #212529; }
+.bgcolor-5.bg-transp { background-color: rgba(239,246,224,.5); }
+
+
+
+/******* FONTS *******/
+
+
+#copyright, #nav-footer {
+    font-size: .8em;
+}
+.social-nav a {
+    font-size: 1.7em;
+}
+#nav-footer a {
+    text-decoration: underline;
+}
+#nav-footer a:hover, .social-nav a:hover {
+    color: #EFF6E0 !important;
+}
+
+/****** FONT-SIZE RESPONSIVE ADJUSTMENTS ******/
+@media (max-width: 991px) {
+
+    #header .h1, #header.h5, .h2, .h3 {
+        font-size: 1.8em;
+    }
+
+}
+@media (max-width: 575px) {
+
+    #header .h1, #header .h2, #header .h5 {
+        font-size: 1.2em;
+    }
+    table.pro-table {
+        font-size: 85%;
+    }
+
+}
