@@ -117,7 +117,7 @@
 </style>
 <body>
     <div class="gdiv">
-        <img class="logo" src="../image/logo.png" alt="logo">
+        <img class="logo" src="image/logo.png" alt="logo">
         <h1>GESTION CONTENU STATIQUE</h1>
         <form action="authGest.php" method="post">
             <label for="email">Email:</label>
