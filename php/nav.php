@@ -204,12 +204,12 @@
                     <?php endif ?>
                 <?php endif ?>
                 <?php if (isset($_SESSION['LOGIN_ADMIN'])) : ?>
-                    <li class="menu-item">
+                    <!-- <li class="menu-item">
                         <a href="message.php" style="text-decoration: none;">Discussion</a>
                         <ul class="dropdown">
                             <li><a href="message.php" style="text-decoration: none;">Public</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 <?php elseif (isset($_SESSION['LOGIN_USER'])):{ ?>
                     <li class="menu-item">
                         <a href="message.php" style="text-decoration: none;">Discussion</a>
