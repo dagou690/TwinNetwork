@@ -1,15 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "twinnetwork";
-
-// Connexion à la base de données
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connexion échouée: " . $conn->connect_error);
-}
+// Inclusion du fichier de connexion
+include '../dbconnect.php';
 
 // Gestion de l'upload de l'image
 $target_dir = "image/";
@@ -17,18 +8,26 @@ $photoComplete = basename($_FILES["photoActualite"]["name"]);
 $photoActualite = pathinfo($photoComplete, PATHINFO_FILENAME);
 $target_file = $target_dir . $photoComplete;
 
-move_uploaded_file($_FILES["photoActualite"]["tmp_name"], $target_file);
-
-// Préparation de la requête SQL
-$stmt = $conn->prepare("INSERT INTO Actualite (titreActualite, descripActualite, photoActualite, dateActualite) VALUES (?, ?, ?, NOW())");
-$stmt->bind_param("sss", $titreActualite, $descripActualite, $photoActualite);
-
-$titreActualite = $_POST['titreActualite'];
-$descripActualite = $_POST['descripActualite'];
-
-$stmt->execute();
-$stmt->close();
-$conn->close();
-
-header("Location: index.php"); // Redirection vers la page principale
+if (move_uploaded_file($_FILES["photoActualite"]["tmp_name"], $target_file)) {
+    try {
+        // Préparation de la requête SQL avec PDO
+        $stmt = $conn->prepare("INSERT INTO Actualite (titreActualite, descripActualite, photoActualite, dateActualite) VALUES (:titreActualite, :descripActualite, :photoActualite, NOW())");
+        
+        // Liaison des paramètres
+        $stmt->bindParam(':titreActualite', $_POST['titreActualite']);
+        $stmt->bindParam(':descripActualite', $_POST['descripActualite']);
+        $stmt->bindParam(':photoActualite', $photoActualite);
+        
+        // Exécution de la requête
+        $stmt->execute();
+        
+        // Redirection vers la page principale après ajout
+        header("Location: index.php");
+        exit();
+    } catch (PDOException $e) {
+        echo "Erreur lors de l'ajout de l'actualité : " . $e->getMessage();
+    }
+} else {
+    echo "Erreur lors du téléchargement de la photo.";
+}
 ?>

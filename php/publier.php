@@ -40,7 +40,7 @@ if (isset($_POST['content'])) {
 
         body div {
             margin:50px;
-            margin-left:25%;
+            margin-left:30%;
         }
 
 
@@ -61,7 +61,7 @@ if (isset($_POST['content'])) {
         }
 
         #publication-form h2 {
-            color: #333;
+            color: #2c3e50;
             text-align: center;
             font-size: 1.8em; /* Taille de police augmentée */
             margin-bottom: 20px; /* Plus d'espace sous le titre */
@@ -85,7 +85,7 @@ if (isset($_POST['content'])) {
         button {
             width: 100%;
             padding: 12px;
-            background-color: #00796b;
+            background-color: #2c3e50;
             color: white;
             border: none;
             border-radius: 8px;
@@ -95,7 +95,7 @@ if (isset($_POST['content'])) {
         }
 
         button:hover {
-            background-color: #005b4f;
+            background-color: #f1cd15;
             transform: translateY(-2px); /* Légère élévation du bouton au survol */
         }
 

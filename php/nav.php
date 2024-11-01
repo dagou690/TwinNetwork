@@ -14,19 +14,19 @@
         }
 
         body {
-            padding-top: 60px; /* Ajuster selon la hauteur de la nav bar */
+            padding-top: 60px;
         }
 
         /* Style pour la nav */
         nav {
-            background-color: #2c3e50; /* Bleu nuit */
+            background-color: #2c3e50;
             padding: 10px 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
-            position: fixed; /* Fixe la nav bar */
-            top: 0; /* Positionne la nav bar en haut */
-            left: 0; /* Aligne la nav bar à gauche */
-            width: 100%; /* Prend toute la largeur de l'écran */
-            z-index: 1000; /* S'assure que la nav bar reste au-dessus des autres éléments */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         /* Style pour la liste */
@@ -35,49 +35,48 @@
             justify-content: flex-start;
             align-items: center;
             list-style-type: none;
-            margin: 0;
-            padding: 0;
         }
 
         /* Style pour les items */
         li {
             position: relative;
             padding: 10px 20px;
-            transition: background-color 0.3s ease;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         li:hover {
-            background-color: #34495e; /* Changement de couleur au survol */
+            background-color: #3BBEE6;
+        }
+
+        #logo-twin:hover {
+            background-color: #2c3e50;
         }
 
         /* Premier item à gauche */
         li:first-child {
             margin-right: auto;
-            padding: 0; /* Suppression du padding supplémentaire */
+            padding: 0;
         }
 
-        /* Style pour le logo */
         li:first-child img {
-            width: 100px; /* Taille ajustée du logo */
+            width: 100px;
             height: auto;
         }
 
-        /* Style pour les liens */
         a {
             text-decoration: none;
-            color: #ecf0f1; /* Texte blanc cassé */
+            color: #ecf0f1;
             transition: color 0.3s ease;
         }
 
-        /* Effet de survol */
         a:hover {
-            color: #1abc9c; /* Couleur vert turquoise */
+            color: #ffffff;
         }
 
         /* Couleurs spécifiques pour le premier item */
         li:first-child a {
-            color: #f1c40f; /* Couleur jaune pour le premier élément */
+            color: #f1c40f;
         }
 
         /* Style pour le sous-menu déroulant */
@@ -86,37 +85,49 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #34495e;
+            background-color: rgba(44, 62, 80, 0.9);
             border-radius: 5px;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            min-width: 150px;
+            min-width: 180px;
             z-index: 1;
         }
 
-        /* Style des éléments dans le sous-menu */
+        /* Afficher le sous-menu au survol */
+        .menu-item:hover .dropdown {
+            display: block;
+            opacity: 1;
+        }
+
         .dropdown li {
-            padding: 12px 20px;
+            padding: 10px 15px;
             white-space: nowrap;
         }
 
         .dropdown li:hover {
-            background-color: #1abc9c; /* Couleur vert turquoise au survol */
+            background-color: #f1cd15;
         }
 
         .dropdown li a {
             color: white;
         }
 
-        /* Afficher le sous-menu lors du survol */
-        .menu-item:hover .dropdown {
-            display: block;
+        /* Bouton hamburger caché sur grand écran */
+        .menu-toggle {
+            display: none;
         }
 
-        /* MEDIA QUERIES */
+        /* Media Queries pour les petits écrans */
+
         @media (max-width: 768px) {
             ul {
                 flex-direction: column;
-                padding: 0;
+                display: none;
+                width: 100%;
+                background-color: #2c3e50;
+            }
+
+            ul.show {
+                display: flex;
             }
 
             li {
@@ -128,19 +139,21 @@
                 position: static;
                 min-width: 100%;
             }
-        }
 
-        @media (max-width: 480px) {
-            ul {
-                padding: 0;
-            }
-
-            li {
-                padding: 12px 0;
-            }
-
-            a {
-                font-size: 16px;
+            /* Style pour le bouton hamburger */
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+                font-size: 24px;
+                color: white;
+                background: #2c3e50;
+                border: none;
+                outline: none;
+                padding: 10px;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                z-index: 1001;
             }
         }
     </style>
@@ -148,14 +161,15 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="index.php"><img src="image/logotwinnetwork.png" alt="Logo"></a></li>
+            <!-- Bouton pour petits écrans -->
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="navbar">
+                <li id="logo-twin"><a href="index.php"><img src="image/logotwinnetwork.png" alt="Logo"></a></li>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="galerie.php">Galerie</a></li>
                 <?php if (!isset($_SESSION['LOGIN_USER'])) : ?>
                     <li><a href="connexion.php">Connexion</a></li>  
                 <?php else : ?>
-                    <!-- Menu déroulant pour la publication -->
                     <li class="menu-item">
                         <a href="publications.php">Publication</a>
                         <ul class="dropdown">
@@ -163,7 +177,6 @@
                             <li><a href="publications.php">Voir publication</a></li>
                         </ul>
                     </li>
-
                     <li class="menu-item">
                         <a href="message.php">Discussion</a>
                         <ul class="dropdown">
@@ -171,10 +184,23 @@
                             <li><a href="message.php">Public</a></li>
                         </ul>
                     </li>
-                    <li><a href="deconnexion.php">Déconnexion</a></li>
+                    <li class="menu-item">
+                        <a href="#">Mon compte</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Mes informations</a></li>
+                            <li><a href="deconnexion.php">Déconnexion</a></li>
+                        </ul>
+                    </li>
                 <?php endif ?>
             </ul>
         </nav>
     </header>
+
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('show');
+        }
+    </script>
 </body>
 </html>

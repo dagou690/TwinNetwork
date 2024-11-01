@@ -31,6 +31,7 @@ if (isset($_POST['comment']) && isset($_POST['publication_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
 <!-- Font-Awesome 5 - Brands and Solid -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css" integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g==" crossorigin="anonymous" />
@@ -151,7 +152,7 @@ if (isset($_POST['comment']) && isset($_POST['publication_id'])) {
 
 .comment-form button {
     padding: 10px 20px;
-    background-color: #00796b;
+    background-color: #3BBEE6;
     color: white;
     border: none;
     border-radius: 8px;
@@ -161,16 +162,17 @@ if (isset($_POST['comment']) && isset($_POST['publication_id'])) {
 }
 
 .comment-form button:hover {
-    background-color: #005b4f;
+    background-color: #2c3e50;
 }
 
     </style>
+
 </head>
 <body>
     <?php require_once("nav.php"); ?>
     <div class="bodyg">
         <div id="publications-container">
-            <h1>Publications</h1>
+            <h1 style="color: #2c3e50;">Publications</h1><br><br>
             <?php
             while ($publication = $recupPublications->fetch()) {
                 echo '<div class="publication">';

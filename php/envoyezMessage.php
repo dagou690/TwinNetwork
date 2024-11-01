@@ -12,7 +12,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            height: 100vh;
+            height: 1000 px;
             
         }
 
@@ -26,7 +26,7 @@
         /* Liste des utilisateurs */
         .user-list {
             width: 25%;
-            height: 459px;
+            min-height: 760px;
             padding: 20px;
             background-color: #2c3e50;
             color: #fff;
@@ -42,7 +42,7 @@
             transition: background-color 0.3s;
         }
         .user-item:hover {
-            background-color: #3b5998;
+            background-color: #3BBEE6;
         }
 
         /* Fenêtre de chat */
@@ -51,7 +51,7 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
-            height: 410px;
+            height: 750px;
             background-color: #ecf0f1;
             overflow: hidden;
         }
@@ -103,7 +103,7 @@
         }
         .message-form input[type="text"] {
             flex: 1;
-            padding: 12px;
+            padding: 20px;
             border-radius: 20px;
             border: 1px solid #ddd;
             outline: none;
@@ -111,8 +111,8 @@
         .message-form button {
             padding: 12px 18px;
             border: none;
-            border-radius: 20px;
-            background-color: #0984e3;
+            border-radius: 10px;
+            background-color: #3BBEE6;
             color: white;
             cursor: pointer;
         }

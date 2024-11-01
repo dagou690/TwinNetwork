@@ -136,7 +136,7 @@ if (isset($postData['connexion'])) {
         button {
             width: 100%;
             padding: 12px;
-            background-color: #27ae60;
+            background-color: #3BBEE6;
             color: white;
             border: none;
             border-radius: 6px;
@@ -147,7 +147,8 @@ if (isset($postData['connexion'])) {
         }
 
         button:hover {
-            background-color: #2ecc71;
+            background-color: #3BBEE6;
+            opacity: 80%;
         }
 
         .div {
@@ -156,10 +157,10 @@ if (isset($postData['connexion'])) {
             color: #ecf0f1;
         }
 
-        .seconnecter {
+        .sinscrire {
             width: 100%;
             padding: 12px;
-            background-color: #2980b9;
+            background-color: #2c3e50;
             color: white;
             border: none;
             border-radius: 6px;
@@ -169,9 +170,11 @@ if (isset($postData['connexion'])) {
             font-weight: 600;
         }
 
-        .seconnecter:hover {
-            background-color: #3498db;
+        .sinscrire:hover {
+            background-color: #2c3e50;
+            opacity: 80%;
         }
+
 
         @media (max-width: 600px) {
             .gdiv {
@@ -206,9 +209,9 @@ if (isset($postData['connexion'])) {
             <br><br>
 
             <button type="submit" name="connexion">Connexion</button>
-            <button type="reset">Effacer</button>
+            <button type="reset" style="background-color: red;">Effacer</button>
             <div class="div">ou</div>
-            <button type="button" class="seconnecter">S'inscrire</button>
+            <button type="button" class="sinscrire">S'inscrire</button>
         </form>
     </div>
 </body>

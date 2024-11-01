@@ -1,15 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "twinnetwork";
-
-// Connexion à la base de données
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connexion échouée: " . $conn->connect_error);
-}
+// Inclusion du fichier de connexion
+include 'dbconnect.php';
 
 // Gestion de l'upload de l'image
 $target_dir = "image/";
@@ -17,19 +8,27 @@ $photoComplete = basename($_FILES["photoEtuAnnee"]["name"]);
 $photoEtuAnnee = pathinfo($photoComplete, PATHINFO_FILENAME);
 $target_file = $target_dir . $photoComplete;
 
-move_uploaded_file($_FILES["photoEtuAnnee"]["tmp_name"], $target_file);
+if (move_uploaded_file($_FILES["photoEtuAnnee"]["tmp_name"], $target_file)) {
+    try {
+        // Préparation de la requête SQL avec PDO
+        $stmt = $conn->prepare("INSERT INTO EtuAnnee (nomEtuAnnee, prenomEtuAnnee, mgaEtuAnnee, photoEtuAnnee) VALUES (:nomEtuAnnee, :prenomEtuAnnee, :mgaEtuAnnee, :photoEtuAnnee)");
 
-// Préparation de la requête SQL
-$stmt = $conn->prepare("INSERT INTO EtuAnnee (nomEtuAnnee, prenomEtuAnnee, mgaEtuAnnee, photoEtuAnnee) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssis", $nomEtuAnnee, $prenomEtuAnnee, $mgaEtuAnnee, $photoEtuAnnee);
+        // Liaison des paramètres
+        $stmt->bindParam(':nomEtuAnnee', $_POST['nomEtuAnnee']);
+        $stmt->bindParam(':prenomEtuAnnee', $_POST['prenomEtuAnnee']);
+        $stmt->bindParam(':mgaEtuAnnee', $_POST['mgaEtuAnnee'], PDO::PARAM_INT);
+        $stmt->bindParam(':photoEtuAnnee', $photoEtuAnnee);
 
-$nomEtuAnnee = $_POST['nomEtuAnnee'];
-$prenomEtuAnnee = $_POST['prenomEtuAnnee'];
-$mgaEtuAnnee = $_POST['mgaEtuAnnee'];
+        // Exécution de la requête
+        $stmt->execute();
 
-$stmt->execute();
-$stmt->close();
-$conn->close();
-
-header("Location: index.php"); // Redirection vers la page principale
+        // Redirection vers la page principale après ajout
+        header("Location: index.php");
+        exit();
+    } catch (PDOException $e) {
+        echo "Erreur lors de l'ajout de l'étudiant de l'année : " . $e->getMessage();
+    }
+} else {
+    echo "Erreur lors du téléchargement de la photo.";
+}
 ?>

@@ -1,15 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "twinnetwork";
-
-// Connexion à la base de données
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connexion échouée: " . $conn->connect_error);
-}
+// Inclusion du fichier de connexion
+include 'dbconnect.php';
 
 // Gestion de l'upload de l'image
 $target_dir = "image/";
@@ -17,20 +8,28 @@ $photoComplete = basename($_FILES["photoAlumni"]["name"]);
 $photoAlumni = pathinfo($photoComplete, PATHINFO_FILENAME);
 $target_file = $target_dir . $photoComplete;
 
-move_uploaded_file($_FILES["photoAlumni"]["tmp_name"], $target_file);
+if (move_uploaded_file($_FILES["photoAlumni"]["tmp_name"], $target_file)) {
+    try {
+        // Préparation de la requête SQL avec PDO
+        $stmt = $conn->prepare("INSERT INTO alumni (nomAlumni, prenomAlumni, metier, nbAnneeExpAlumni, photoAlumni) VALUES (:nomAlumni, :prenomAlumni, :metier, :nbAnneeExpAlumni, :photoAlumni)");
 
-// Préparation de la requête SQL
-$stmt = $conn->prepare("INSERT INTO alumni (nomAlumni, prenomAlumni, metier, nbAnneeExpAlumni, photoAlumni) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssds", $nomAlumni, $prenomAlumni, $metier, $nbAnneeExpAlumni, $photoAlumni);
+        // Liaison des paramètres
+        $stmt->bindParam(':nomAlumni', $_POST['nomAlumni']);
+        $stmt->bindParam(':prenomAlumni', $_POST['prenomAlumni']);
+        $stmt->bindParam(':metier', $_POST['metier']);
+        $stmt->bindParam(':nbAnneeExpAlumni', $_POST['nbAnneeExpAlumni']);
+        $stmt->bindParam(':photoAlumni', $photoAlumni);
 
-$nomAlumni = $_POST['nomAlumni'];
-$prenomAlumni = $_POST['prenomAlumni'];
-$metier = $_POST['metier'];
-$nbAnneeExpAlumni = $_POST['nbAnneeExpAlumni'];
+        // Exécution de la requête
+        $stmt->execute();
 
-$stmt->execute();
-$stmt->close();
-$conn->close();
-
-header("Location: index.php"); // Redirection vers la page principale
+        // Redirection vers la page principale après ajout
+        header("Location: index.php");
+        exit();
+    } catch (PDOException $e) {
+        echo "Erreur lors de l'ajout de l'alumni : " . $e->getMessage();
+    }
+} else {
+    echo "Erreur lors du téléchargement de la photo.";
+}
 ?>

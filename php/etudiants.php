@@ -1,36 +1,32 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "twinnetwork";
+// Inclusion du fichier de connexion
+include '../dbconnect.php';
 
-// Connexion à la base de données
-$conn = new mysqli($servername, $username, $password, $dbname);
+try {
+    // Requête pour récupérer les données des étudiants de l'année
+    $sql = "SELECT photoEtuAnnee, nomEtuAnnee, prenomEtuAnnee, mgaEtuAnnee FROM EtuAnnee";
+    $stmt = $conn->query($sql);
 
-if ($conn->connect_error) {
-    die("Connexion échouée: " . $conn->connect_error);
-}
-
-// Requête pour récupérer les données des étudiants de l'année
-$sql = "SELECT photoEtuAnnee, nomEtuAnnee, prenomEtuAnnee, mgaEtuAnnee FROM EtuAnnee";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo '
-        <div class="1">
-            <div class="image"><img src="image/' . pathinfo($row["photoEtuAnnee"], PATHINFO_FILENAME) . '.png" alt="Photo de ' . $row["prenomEtuAnnee"] . ' ' . $row["nomEtuAnnee"] . '"></div>
-            <div class="nom">
-                <p>' . $row["prenomEtuAnnee"] . ' ' . $row["nomEtuAnnee"] . '</p>
-            </div>
-            <div class="mga">
-                <p>MGA : ' . $row["mgaEtuAnnee"] . '</p>
-            </div>
-        </div>';
+    // Vérification de la présence de données
+    if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo '
+            <div class="1">
+                <div class="image">
+                    <img src="image/' . htmlspecialchars(pathinfo($row["photoEtuAnnee"], PATHINFO_FILENAME)) . '.png" alt="Photo de ' . htmlspecialchars($row["prenomEtuAnnee"]) . ' ' . htmlspecialchars($row["nomEtuAnnee"]) . '">
+                </div>
+                <div class="nom">
+                    <p>' . htmlspecialchars($row["prenomEtuAnnee"]) . ' ' . htmlspecialchars($row["nomEtuAnnee"]) . '</p>
+                </div>
+                <div class="mga">
+                    <p>MGA : ' . htmlspecialchars($row["mgaEtuAnnee"]) . '</p>
+                </div>
+            </div>';
+        }
+    } else {
+        echo '<p>Aucun étudiant trouvé.</p>';
     }
-} else {
-    echo '<p>Aucun étudiant trouvé.</p>';
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
 }
-
-$conn->close();
 ?>

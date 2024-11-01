@@ -43,8 +43,8 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
 
         /* Conteneur de la messagerie */
         #chat-container {
-            width: 90%;
-            max-width: 800px;
+            width: 98%;
+            /* max-width: 100%; */
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -77,15 +77,15 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
             word-wrap: break-word;
         }
         .user-message {
-            background-color: #cdeff2;
+            background-color: #3BBEE6;
             margin-left: auto;
             text-align: right;
-            color: #00796b;
+            color: #ffffff;
         }
         .other-message {
-            background-color: #f1f1f1;
+            background-color: #2c3e50;
             text-align: left;
-            color: #333;
+            color: #ffffff;
         }
 
         /* Nom et date des messages */
@@ -110,7 +110,7 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
         textarea {
             flex: 1;
             padding: 12px;
-            border-radius: 25px;
+            border-radius: 15px;
             border: 1px solid #ddd;
             resize: none;
             font-size: 16px;
@@ -122,7 +122,7 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
             background: #00796b;
             color: white;
             border: none;
-            border-radius: 30%;
+            border-radius: 10%;
             padding: 12px;
             cursor: pointer;
             font-size: 18px;
@@ -141,7 +141,7 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
             while ($message = $recupMessage->fetch()) {
                 $formattedDate = date('d/m/Y H:i', strtotime($message['date_envoi']));
                 if ($message['userId'] == $_SESSION['LOGIN_USER']['user_id']) {
-                    echo '<div class="user-message"><h4>Vous :</h4><p>' . htmlspecialchars($message['message']) . '</p><small>' . $formattedDate . '</small></div>';
+                    echo '<div class="user-message"><h4>Vous :</h4><p>' . htmlspecialchars($message['message']) . '</p><small style="color: black;">' . $formattedDate . '</small></div>';
                 } else {
                     echo '<div class="other-message"><h4>' . htmlspecialchars($message['pseudo']) . ' :</h4><p>' . htmlspecialchars($message['message']) . '</p><small>' . $formattedDate . '</small></div>';
                 }
