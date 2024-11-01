@@ -7,20 +7,17 @@ if(!isset($_SESSION['LOGIN_ADMIN'])){
     redirectToUrl('loginAdmin.php');
 }
 
-
 if (isset($_POST['ajouterGestionnaire'])) {
     $nom = htmlspecialchars($_POST['nom']);
     $prenom = htmlspecialchars($_POST['prenom']);
     $email = htmlspecialchars($_POST['email']);
-    $motPasse = sha1($_POST['motPasse'], PASSWORD_DEFAULT); // Hachage du mot de passe
-    $confmotPasse = sha1($_POST['confmotPasse'], PASSWORD_DEFAULT); // Hachage du mot de passe
+    $motPasse = sha1($_POST['motPasse']); // Hachage du mot de passe
+    $confmotPasse = sha1($_POST['confmotPasse']); // Hachage du mot de passe
    
-
-       // Validation de l'email
+    // Validation de l'email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errEmail = 'Il faut un email valide pour s\'inscrire.';
     } 
-  
     // Vérification si les deux mots de passe correspondent
     elseif ($motPasse != $confmotPasse) {
         $motPasseIncorrete = 'Le mot de passe doit être identique.';
@@ -36,19 +33,17 @@ if (isset($_POST['ajouterGestionnaire'])) {
             $stmt = $conn->prepare($sql);
             $stmt->execute([$nom, $prenom, $email, $motPasse]);
         
-            if ($stmt->execute()) {
-                $gestionnAjoute = "<div class='alert alert-success'>Etudiant ajouté avec succès.</div>";
+            if ($stmt) {
+                $gestionnAjoute = "<div class='alert alert-success'>Gestionnaire ajouté avec succès.</div>";
                 redirectToUrl('listeGestionnaire.php');
-            } 
-            else{
-                $erreurAjout = "Erreur lors de l'ajout de l'étudiant.";
+            } else {
+                $erreurAjout = "Erreur lors de l'ajout du gestionnaire.";
             }
         } else {
-            $emailExiste = 'Désolé mais cette adresse a déjà un compte.';
+            $emailExiste = 'Désolé, cette adresse email est déjà utilisée.';
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +52,6 @@ if (isset($_POST['ajouterGestionnaire'])) {
     <meta charset="UTF-8">
     <title>Ajouter un Gestionnaire de Contenu</title>
     <style>
-                /* Style général pour le corps de la page */
         body {
             font-family: Arial, sans-serif;
             background-color: white;
@@ -69,8 +63,6 @@ if (isset($_POST['ajouterGestionnaire'])) {
             justify-content: center;
             min-height: 100vh;
         }
-
-        /* Conteneur principal */
         .container {
             width: 100%;
             max-width: 500px;
@@ -80,8 +72,6 @@ if (isset($_POST['ajouterGestionnaire'])) {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
-
-        /* Titre de la page */
         h2 {
             font-size: 24px;
             color: #3BBEE6;
@@ -89,12 +79,9 @@ if (isset($_POST['ajouterGestionnaire'])) {
             font-weight: bold;
             text-transform: uppercase;
         }
-
-        /* Champs de formulaire */
         .form-group {
             margin-bottom: 15px;
         }
-
         label {
             display: block;
             font-weight: bold;
@@ -102,7 +89,6 @@ if (isset($_POST['ajouterGestionnaire'])) {
             text-align: left;
             margin-bottom: 5px;
         }
-
         input[type="text"],
         input[type="email"],
         input[type="password"],
@@ -115,14 +101,11 @@ if (isset($_POST['ajouterGestionnaire'])) {
             color: #333;
             transition: border-color 0.3s ease;
         }
-
         input:focus,
         select:focus {
             border-color: #124559;
             outline: none;
         }
-
-        /* Bouton d'ajout d'utilisateur */
         .btn-custom {
             width: 100%;
             padding: 12px;
@@ -134,62 +117,35 @@ if (isset($_POST['ajouterGestionnaire'])) {
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
         .btn-custom:hover {
             background-color: #3BBEE6;
             opacity: 90%;
         }
-
-        /* Alertes de réussite et d'erreur */
         .alert {
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
             font-size: 16px;
         }
-
         .alert-success {
             color: #ffffff;
             background-color: #124559;
         }
-
         .alert-danger {
             color: #ffffff;
             background-color: #ff0000;
         }
-
     </style>
 </head>
 <body>
     <div class="container">
         <h2 class="text-center">Ajouter un Gestionnaire de Contenu</h2><br>
-        <?php if(!empty($gestionnAjoute)){
-            echo $gestionnAjoute;
-        }
-        if(!empty($errEmail)){
-            echo $errEmail;
-        }
-        if(!empty($motPasseIncorrete)){
-        ?>
-            <div style="color: red;">
-                <?php echo $motPasseIncorrete; ?>
-            </div>
-        <?php
-        }
-        if(!empty($emailExiste)){ 
-            ?>
-            <div class='alert alert-danger'>
-                <?php echo $emailExiste ?>
-            </div>
-           <?php } ?>
-        <?php
-        if(!empty($erreurAjout)){ 
-            ?>
-            <div class='alert alert-danger'>
-                <?php echo $erreurAjout ?>
-            </div>
-           <?php } ?>
-        
+        <?php if(!empty($gestionnAjoute)) echo $gestionnAjoute; ?>
+        <?php if(!empty($errEmail)) echo "<div class='alert alert-danger'>$errEmail</div>"; ?>
+        <?php if(!empty($motPasseIncorrete)) echo "<div class='alert alert-danger'>$motPasseIncorrete</div>"; ?>
+        <?php if(!empty($emailExiste)) echo "<div class='alert alert-danger'>$emailExiste</div>"; ?>
+        <?php if(!empty($erreurAjout)) echo "<div class='alert alert-danger'>$erreurAjout</div>"; ?>
+
         <form method="post">
             <div class="form-group">
                 <label for="nom">Nom</label>
