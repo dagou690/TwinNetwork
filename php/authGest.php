@@ -22,6 +22,7 @@ try {
     if ($stmt->rowCount() > 0) {
         // Connexion réussie
         $_SESSION['loggedin'] = true;
+        
         header("Location: dashboardGest.php");
     } else {
         // Connexion échouée

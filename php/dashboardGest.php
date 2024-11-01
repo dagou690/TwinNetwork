@@ -62,17 +62,18 @@ li {
 li a {
     display: block;
     padding: 10px;
-    background-color: #4CAF50;
+    /* background-color: #4CAF50; */
     color: white;
     text-decoration: none;
     text-align: center;
     border-radius: 4px;
     transition: background-color 0.3s;
+    font-size: bold;
 }
 
-li a:hover {
-    background-color: #45a049;
-}
+/* li a:hover {
+    font-size: bold;
+} */
 
 form {
     margin-top: 20px;
@@ -80,7 +81,7 @@ form {
 
 button {
     padding: 10px 20px;
-    background-color: #f44336;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
@@ -98,9 +99,9 @@ button:hover {
     <div class="dashboard-container">
         <h1>Tableau de Bord</h1>
         <ul>
-            <li><a href="etuanneehtml.php">Ajouter un étudiant de l'année</a></li>
-            <li><a href="alumnihtml.php">Ajouter un alumni</a></li>
-            <li><a href="actualitehtml.php">Ajouter une actualité</a></li>
+            <li style="background-color :#e53935";><a href="etuanneehtml.php">Ajouter un étudiant de l'année</a></li>
+            <li style="background-color :#3BBEE6";><a href="alumnihtml.php">Ajouter un alumni</a></li>
+            <li style="background-color :#007bff";><a href="actualitehtml.php">Ajouter une actualité</a></li>
         </ul>
         <form action="logoutGest.php" method="post">
             <button type="submit">Se déconnecter</button>

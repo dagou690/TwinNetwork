@@ -117,9 +117,17 @@
 </style>
 <body>
     <div class="gdiv">
-        <img class="logo" src="../image/logo.png" alt="logo">
+        <img class="logo" src="./image/logo.png" alt="logo">
         <h1>GESTION CONTENU STATIQUE</h1>
         <form action="authGest.php" method="post">
+            <!-- <?php if (isset($_SESSION['login_error'])): ?>
+                <div style="background-color: red;" class="error-message">
+                    <?php 
+                    echo $_SESSION['login_error'];
+                    unset($_SESSION['login_error']); // Effacer le message après l'affichage
+                    ?>
+                </div>
+            <?php endif; ?> -->
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             
