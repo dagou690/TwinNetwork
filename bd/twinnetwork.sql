@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 18 oct. 2024 à 17:35
+-- Généré le : ven. 01 nov. 2024 à 15:19
 -- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.0.30
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -98,7 +98,10 @@ INSERT INTO `comments` (`id`, `publicationId`, `userId`, `comment`, `date_commen
 (2, 6, 3, 'cool', '2024-10-18 02:05:17'),
 (3, 8, 1, 'CHIC', '2024-10-18 11:03:36'),
 (4, 7, 1, 'SUPER', '2024-10-18 11:03:45'),
-(5, 8, 2, 'owwwwwww', '2024-10-18 13:34:48');
+(5, 8, 2, 'owwwwwww', '2024-10-18 13:34:48'),
+(6, 9, 1, 'Coucou !', '2024-10-18 16:28:50'),
+(7, 9, 1, 'Ton modiaaa !', '2024-10-18 16:29:07'),
+(8, 10, 1, 'Fine !', '2024-11-01 08:32:50');
 
 -- --------------------------------------------------------
 
@@ -122,7 +125,8 @@ INSERT INTO `etuannee` (`idEtuAnnee`, `photoEtuAnnee`, `nomEtuAnnee`, `prenomEtu
 (1, 'student-fort-02 twin 3-02', 'KOUADIO', 'Josue', '18'),
 (2, 'student-fort-02 twin2-02', 'KOUADIO', 'JOSUE NOEL YAO', '20'),
 (3, '', NULL, NULL, NULL),
-(4, 'student-fort-02 twin2-02', 'KOUADIO', 'JOSUE NOEL YAO', '20');
+(4, 'student-fort-02 twin2-02', 'KOUADIO', 'JOSUE NOEL YAO', '20'),
+(5, 'student-fort-02 twin 3-02', 'KOUADIO', 'Josué', '13');
 
 -- --------------------------------------------------------
 
@@ -143,7 +147,18 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `pseudo`, `message`, `userId`, `date_envoi`) VALUES
-(0, '', 'salut', 2, '2024-10-18 15:34:19');
+(0, '', 'salut', 2, '2024-10-18 15:34:19'),
+(0, '', 'Salut  !', 1, '2024-10-18 16:30:37'),
+(0, '', 'Slt', 1, '2024-11-01 08:35:06'),
+(0, '', 'cc', 1, '2024-11-01 08:35:17'),
+(0, '', 'C', 1, '2024-11-01 08:36:42'),
+(0, '', 'C', 1, '2024-11-01 08:40:24'),
+(0, '', 'CC', 1, '2024-11-01 08:40:31'),
+(0, '', 'CC', 1, '2024-11-01 08:40:42'),
+(0, '', 'CC', 1, '2024-11-01 08:41:35'),
+(0, '', 'CC', 1, '2024-11-01 08:42:15'),
+(0, '', 'ccqtehf', 3, '2024-11-01 08:48:54'),
+(0, '', 'qsfx', 3, '2024-11-01 09:02:48');
 
 -- --------------------------------------------------------
 
@@ -165,7 +180,17 @@ CREATE TABLE `messagesprive` (
 --
 
 INSERT INTO `messagesprive` (`id`, `pseudo`, `message`, `userId`, `date_envoi`, `recipientId`) VALUES
-(0, '', 'bonsoir', 2, '2024-10-18 15:29:26', 1);
+(0, '', 'bonsoir', 2, '2024-10-18 15:29:26', 1),
+(0, '', 'Ca va toi ?', 1, '2024-10-18 16:31:27', 2),
+(0, '', 'Hello ', 1, '2024-10-18 16:31:38', 3),
+(0, '', 'cc', 1, '2024-11-01 08:43:38', 2),
+(0, '', 'cc', 3, '2024-11-01 08:46:15', 1),
+(0, '', 'oui oui', 1, '2024-11-01 08:47:47', 3),
+(0, '', 'dcvv', 1, '2024-11-01 10:21:46', 2),
+(0, '', 'cbxvcb ', 1, '2024-11-01 10:21:48', 2),
+(0, '', 'ghbjn,;;', 1, '2024-11-01 10:21:50', 2),
+(0, '', 'SL', 1, '2024-11-01 10:33:48', 4),
+(0, '', 'Ca va toi ?', 1, '2024-11-01 10:57:44', 2);
 
 -- --------------------------------------------------------
 
@@ -194,7 +219,10 @@ INSERT INTO `publications` (`id`, `userId`, `content`, `image`, `date_pub`) VALU
 (6, 2, 'jjj', 'téléchargement (3).jpeg', '2024-10-18 01:47:29'),
 (7, 3, 'eede', 'téléchargement (2).jpeg', '2024-10-18 02:05:43'),
 (8, 1, 'SALUT FAMLILLE', '1.png', '2024-10-18 11:03:28'),
-(9, 2, 'jjeffef', 'compte.jpg', '2024-10-18 13:35:09');
+(9, 2, 'jjeffef', 'compte.jpg', '2024-10-18 13:35:09'),
+(10, 1, 'Hello ! How are you ?', NULL, '2024-10-18 16:29:51'),
+(11, 1, 'CC', NULL, '2024-11-01 08:33:55'),
+(12, 1, 'v', 'test-id.png', '2024-11-01 08:34:09');
 
 -- --------------------------------------------------------
 
@@ -207,17 +235,21 @@ CREATE TABLE `user` (
   `Nom` text NOT NULL,
   `Prenom` text NOT NULL,
   `Email` text NOT NULL,
-  `motpasse` text NOT NULL
+  `motpasse` text NOT NULL,
+  `telUser` varchar(25) NOT NULL,
+  `villeUser` varchar(25) NOT NULL,
+  `promotionUser` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`idUser`, `Nom`, `Prenom`, `Email`, `motpasse`) VALUES
-(1, 'TOURE', 'Wilfried', 'wilfried@gmail.com', 'geek'),
-(2, 'KONAN', 'ERIC', 'konan@gmail.com', 'konan'),
-(3, 'TANO', 'OKI', 'tano@gmail.com', 'tano');
+INSERT INTO `user` (`idUser`, `Nom`, `Prenom`, `Email`, `motpasse`, `telUser`, `villeUser`, `promotionUser`) VALUES
+(1, 'TOURE', 'Wilfried', 'wilfried@gmail.com', 'geek', '', '', ''),
+(2, 'KONAN', 'ERIC', 'konan@gmail.com', 'konan', '', '', ''),
+(3, 'TANO', 'OKI', 'tano@gmail.com', 'tano', '', '', ''),
+(4, 'YEO', 'Tanna', 'yeo@gmail.com', 'yeo@gmail.com', '', '', '');
 
 --
 -- Index pour les tables déchargées
@@ -282,25 +314,25 @@ ALTER TABLE `alumni`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `etuannee`
 --
 ALTER TABLE `etuannee`
-  MODIFY `idEtuAnnee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idEtuAnnee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `publications`
 --
 ALTER TABLE `publications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
