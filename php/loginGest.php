@@ -1,14 +1,16 @@
+<!-- login.php -->
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion Contenu Statique</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<style>
-    /* Style amélioré pour le formulaire de connexion */
-    body {
+    <style>
+        /* Vos styles CSS existants */
+        body {
         font-family: 'Arial', sans-serif;
         background-color: #2c3e50;
         margin: 0;
@@ -114,20 +116,32 @@
             font-size: 20px;
         }
     }
-</style>
+
+        /* Style pour le message d'erreur */
+        .error-message {
+            background-color: #ff4444;
+            color: white;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
 <body>
     <div class="gdiv">
         <img class="logo" src="./image/logo.png" alt="logo">
         <h1>GESTION CONTENU STATIQUE</h1>
         <form action="authGest.php" method="post">
-            <!-- <?php if (isset($_SESSION['login_error'])): ?>
-                <div style="background-color: red;" class="error-message">
+            <?php if(isset($_SESSION['login_error'])): ?>
+                <div class="error-message">
                     <?php 
-                    echo $_SESSION['login_error'];
-                    unset($_SESSION['login_error']); // Effacer le message après l'affichage
+                        echo $_SESSION['login_error'];
+                        unset($_SESSION['login_error']); 
                     ?>
                 </div>
-            <?php endif; ?> -->
+            <?php endif; ?>
+            
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             
@@ -139,3 +153,4 @@
     </div>
 </body>
 </html>
+

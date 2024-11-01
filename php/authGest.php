@@ -1,34 +1,37 @@
+<!-- authGest.php -->
 <?php
 session_start();
 
-// Inclusion du fichier de connexion
 include '../dbconnect.php';
 
-$Email = $_POST['email'];
-$motpasse = $_POST['password'];
+if(isset($_POST['email']) && isset($_POST['password'])) {
+    $Email = $_POST['email'];
+    $motpasse = $_POST['password'];
 
-try {
-    // Requête pour vérifier les informations de connexion
-    $sql = "SELECT * FROM gestionnaire WHERE Email = :Email AND motpasse = :motpasse";
-    $stmt = $conn->prepare($sql);
+    try {
+        $sql = "SELECT * FROM gestionnaire WHERE Email = :Email AND motpasse = :motpasse";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':Email', $Email);
+        $stmt->bindParam(':motpasse', $motpasse);
+        $stmt->execute();
 
-    // Liaison des paramètres
-    $stmt->bindParam(':Email', $Email);
-    $stmt->bindParam(':motpasse', $motpasse);
-
-    // Exécution de la requête
-    $stmt->execute();
-
-    if ($stmt->rowCount() > 0) {
-        // Connexion réussie
-        $_SESSION['loggedin'] = true;
-        
-        header("Location: dashboardGest.php");
-    } else {
-        // Connexion échouée
-        header("Location: login.php?error=1");
+        if($stmt->rowCount() > 0) {
+            $_SESSION['loggedin'] = true;
+            header("Location: dashboardGest.php");
+            exit();
+        } else {
+            $_SESSION['login_error'] = "Email ou mot de passe incorrect";
+            header("Location: loginGest.php");
+            exit();
+        }
+    } catch(PDOException $e) {
+        $_SESSION['login_error'] = "Une erreur est survenue";
+        header("Location: loginGest.php");
+        exit();
     }
-} catch (PDOException $e) {
-    echo "Erreur : " . $e->getMessage();
+} else {
+    $_SESSION['login_error'] = "Veuillez remplir tous les champs";
+    header("Location: loginGest.php");
+    exit();
 }
 ?>
