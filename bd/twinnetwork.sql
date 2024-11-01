@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 01 nov. 2024 à 15:19
+-- Généré le : ven. 01 nov. 2024 à 16:33
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -127,6 +127,27 @@ INSERT INTO `etuannee` (`idEtuAnnee`, `photoEtuAnnee`, `nomEtuAnnee`, `prenomEtu
 (3, '', NULL, NULL, NULL),
 (4, 'student-fort-02 twin2-02', 'KOUADIO', 'JOSUE NOEL YAO', '20'),
 (5, 'student-fort-02 twin 3-02', 'KOUADIO', 'Josué', '13');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `gestionnaire`
+--
+
+CREATE TABLE `gestionnaire` (
+  `idGest` int(11) NOT NULL,
+  `nomGest` varchar(255) NOT NULL,
+  `prenomGest` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `motpasse` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `gestionnaire`
+--
+
+INSERT INTO `gestionnaire` (`idGest`, `nomGest`, `prenomGest`, `Email`, `motpasse`) VALUES
+(1, 'KOUADIO', 'Josué', 'josue.kouadio@outlook.fr', '1234');
 
 -- --------------------------------------------------------
 
@@ -282,6 +303,12 @@ ALTER TABLE `etuannee`
   ADD PRIMARY KEY (`idEtuAnnee`);
 
 --
+-- Index pour la table `gestionnaire`
+--
+ALTER TABLE `gestionnaire`
+  ADD PRIMARY KEY (`idGest`);
+
+--
 -- Index pour la table `publications`
 --
 ALTER TABLE `publications`
@@ -321,6 +348,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `etuannee`
   MODIFY `idEtuAnnee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `gestionnaire`
+--
+ALTER TABLE `gestionnaire`
+  MODIFY `idGest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `publications`

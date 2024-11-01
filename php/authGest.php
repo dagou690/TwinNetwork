@@ -2,14 +2,14 @@
 session_start();
 
 // Inclusion du fichier de connexion
-include 'dbconnect.php';
+include '../dbconnect.php';
 
 $Email = $_POST['email'];
 $motpasse = $_POST['password'];
 
 try {
     // Requête pour vérifier les informations de connexion
-    $sql = "SELECT * FROM user WHERE Email = :Email AND motpasse = :motpasse";
+    $sql = "SELECT * FROM gestionnaire WHERE Email = :Email AND motpasse = :motpasse";
     $stmt = $conn->prepare($sql);
 
     // Liaison des paramètres

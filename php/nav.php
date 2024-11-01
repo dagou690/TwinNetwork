@@ -187,7 +187,7 @@
                     <li class="menu-item">
                         <a href="#">Mon compte</a>
                         <ul class="dropdown">
-                            <li><a href="#">Mes informations</a></li>
+                            <li><a href="profil.php">Mes informations</a></li>
                             <li><a href="deconnexion.php">Déconnexion</a></li>
                         </ul>
                     </li>
