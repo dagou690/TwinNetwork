@@ -139,6 +139,15 @@
                 position: static;
                 min-width: 100%;
             }
+            .dropdown li:hover {
+            background-color: #f1cd15;
+            padding: 10px 15px;
+        }
+
+        li:hover {
+            padding: 10px 20px;
+            background-color: #3BBEE6;
+        }
 
             /* Style pour le bouton hamburger */
             .menu-toggle {
