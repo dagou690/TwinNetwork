@@ -133,7 +133,7 @@ elseif(isset($_SESSION['LOGIN_ADMIN']['admin_id'])){
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         button {
-            background: #00796b;
+            background: #3BBEE6;
             color: white;
             border: none;
             border-radius: 10%;
