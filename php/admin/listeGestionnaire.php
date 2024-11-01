@@ -1,13 +1,13 @@
 <?php
 session_start();
-include '../../dbconnect.php'; // Inclusion du fichier de connexion
+include '../dbconnect.php'; // Inclusion du fichier de connexion
 require_once("../fonction.php");
 
 if(!isset($_SESSION['LOGIN_ADMIN'])){
     redirectToUrl('loginAdmin.php');
 }
 
-$sql = "SELECT * FROM user";
+$sql = "SELECT * FROM gestionnaire";
 $stmt = $conn->query($sql);
 ?>
 
@@ -15,7 +15,7 @@ $stmt = $conn->query($sql);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Voir les Utilisateurs</title>
+    <title>Voir les Gestionnaires de Contenu</title>
     <style>
         /* Style général pour le corps de la page */
         body {
@@ -39,7 +39,6 @@ $stmt = $conn->query($sql);
 
         /* Titre de la page */
         h2 {
-            color: #124559;
             text-align: center;
             font-weight: bold;
             margin-bottom: 20px;
@@ -55,7 +54,7 @@ $stmt = $conn->query($sql);
             padding: 10px 20px;
             font-size: 16px;
             color: #ffffff;
-            background-color: blue;
+            background-color: orange;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -78,7 +77,7 @@ $stmt = $conn->query($sql);
         }
 
         .table thead th {
-            background-color: #124559;
+            background-color: #3BBEE6;
             color: #ffffff;
             text-transform: uppercase;
         }
@@ -95,7 +94,7 @@ $stmt = $conn->query($sql);
         /* Centrer le texte si aucune donnée n'est trouvée */
         .text-center {
             text-align: center;
-            color: #ff0000;
+            color: #2c3e50;
             font-weight: bold;
         }
 
@@ -107,18 +106,18 @@ $stmt = $conn->query($sql);
 
         /* Légère animation au survol */
         .table tbody tr:hover td {
-            color: #124559;
+            color: orange;
             font-weight: bold;
         }
     </style>
 </head>
 <body>
 <div class="container">
-        <h2 class="text-center" style="color: orange;">Liste des Utilisateurs</h2><br><br>
+        <h2 class="text-center">Liste des Gestionnaires de Contenu</h2><br><br>
         
         <!-- Boutons d'ajout -->
         <div class="button-container">
-            <a href="ajouterEtudiant.php" class="btn" style="background-color: #3BBEE6;">Ajouter un Etudiant</a>
+            <a href="AjouterGestionnaire.php" class="btn">Ajouter un Gestionnaires de Contenu</a>
         </div>
 
         <table class="table table-bordered">
@@ -128,9 +127,6 @@ $stmt = $conn->query($sql);
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
-                    <th>Téléphone</th>
-                    <th>Promotion</th>
-                    <th>Ville</th>
                     
                 </tr>
             </thead>
@@ -138,19 +134,16 @@ $stmt = $conn->query($sql);
                 <?php if ($stmt->rowCount() > 0): ?>
                     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($row['idUser']); ?></td>
-                            <td><?php echo htmlspecialchars($row['Nom']); ?></td>
-                            <td><?php echo htmlspecialchars($row['Prenom']); ?></td>
+                            <td><?php echo htmlspecialchars($row['idGest']); ?></td>
+                            <td><?php echo htmlspecialchars($row['nomGest']); ?></td>
+                            <td><?php echo htmlspecialchars($row['prenomGest']); ?></td>
                             <td><?php echo htmlspecialchars($row['Email']); ?></td>
-                            <td><?php echo htmlspecialchars($row['telUser']); ?></td>
-                            <td><?php echo htmlspecialchars($row['promotionUser']); ?></td>
-                            <td><?php echo htmlspecialchars($row['villeUser']); ?></td>
                            
                         </tr>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="7" class="text-center">Aucun utilisateur trouvé.</td>
+                        <td colspan="7" class="text-center">Aucun Gestionnaire de Contenu trouvé.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>

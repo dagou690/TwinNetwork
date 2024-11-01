@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 01 nov. 2024 à 16:33
+-- Généré le : ven. 01 nov. 2024 à 17:49
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -49,6 +49,22 @@ INSERT INTO `actualite` (`idActualite`, `photoActualite`, `titreActualite`, `des
 (7, 'actualite-02.png', 'Cabri', 'C\'est le cabri', '2024-10-18'),
 (8, 'actualite-02', 'Cabri', 'Oui !!!', '2024-10-18'),
 (9, 'actualite-02', 'Cabri', 'loehugigbssvcejgu', '2024-10-18');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+CREATE TABLE `admin` (
+  `idAdmin` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `motPasse` varchar(255) NOT NULL,
+  `telephone` varchar(20) DEFAULT NULL,
+  `date_creation` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 

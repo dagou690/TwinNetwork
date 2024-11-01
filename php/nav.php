@@ -194,6 +194,13 @@
                         </ul>
                     </li>
                     <li class="menu-item">
+                        <a href="#">Administration</a>
+                        <ul class="dropdown">
+                            <li><a href="admin/ListeEtudiant.php">Etudiant</a></li>
+                            <li><a href="admin/listeGestionnaire.php">Gestionnaire</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
                         <a href="#">Mon compte</a>
                         <ul class="dropdown">
                             <li><a href="profil.php">Mes informations</a></li>

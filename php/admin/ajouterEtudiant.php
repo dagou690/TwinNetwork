@@ -1,17 +1,23 @@
 <?php
 session_start();
-require_once("../../dbconnect.php");
+include '../dbconnect.php'; // Inclusion du fichier de connexion
 require_once("../fonction.php");
+
+if(!isset($_SESSION['LOGIN_ADMIN'])){
+    redirectToUrl('loginAdmin.php');
+}
+
 
 if (isset($_POST['ajouterUtilisateur'])) {
     $nom = htmlspecialchars($_POST['nom']);
     $prenom = htmlspecialchars($_POST['prenom']);
     $email = htmlspecialchars($_POST['email']);
+    $motPasse = sha1($_POST['motPasse'], PASSWORD_DEFAULT); // Hachage du mot de passe
+    $confmotPasse = sha1($_POST['confmotPasse'], PASSWORD_DEFAULT); // Hachage du mot de passe
     $numTel = htmlspecialchars($_POST['numTel']);
     $ville = htmlspecialchars($_POST['ville']);
     $promotion = htmlspecialchars($_POST['promotion']);
-    $motPasse = sha1($_POST['motPasse'], PASSWORD_DEFAULT); // Hachage du mot de passe
-    $confmotPasse = sha1($_POST['confmotPasse'], PASSWORD_DEFAULT); // Hachage du mot de passe
+   
 
        // Validation de l'email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -31,10 +37,10 @@ if (isset($_POST['ajouterUtilisateur'])) {
         if ($controlEmail == 0) {
             $sql = "INSERT INTO user (Nom, Prenom, Email, motpasse, telUser, villeUser, promotionUser) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$nom, $prenom, $email, $numTel, $ville, $promotion, $motPasse]);
+            $stmt->execute([$nom, $prenom, $email, $motPasse, $numTel, $ville, $promotion]);
         
             if ($stmt->execute()) {
-                $etudiantrAjoute = "<div class='alert alert-success'>Etudiant ajouté avec succès.</div>";
+                $etudiantAjoute = "<div class='alert alert-success'>Etudiant ajouté avec succès.</div>";
                 redirectToUrl('listeEtudiant.php');
             } 
             else{
@@ -81,7 +87,7 @@ if (isset($_POST['ajouterUtilisateur'])) {
         /* Titre de la page */
         h2 {
             font-size: 24px;
-            color: #2c3e50;
+            color: #fca311;
             margin-bottom: 20px;
             font-weight: bold;
             text-transform: uppercase;
@@ -160,8 +166,8 @@ if (isset($_POST['ajouterUtilisateur'])) {
 <body>
     <div class="container">
         <h2 class="text-center">Ajouter un Etudiant</h2><br>
-        <?php if(!empty($etudiantrAjoute)){
-            echo $etudiantrAjoute;
+        <?php if(!empty($etudiantAjoute)){
+            echo $etudiantAjoute;
         }
         if(!empty($errEmail)){
             echo $errEmail;

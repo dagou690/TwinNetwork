@@ -15,7 +15,7 @@ if (isset($postData['connexion'])) {
             $errEmail = 'Il faut un email valide pour se connecter.';
         } else {
             try {
-                $reqEmail = $connexionDB->prepare("SELECT * FROM admin WHERE email = ?");
+                $reqEmail = $conn->prepare("SELECT * FROM admin WHERE email = ?");
                 $reqEmail->execute([$email]);
                 $administrateur = $reqEmail->fetch(PDO::FETCH_ASSOC);
 
@@ -28,7 +28,7 @@ if (isset($postData['connexion'])) {
                             'prenom' => $administrateur['prenom']
                         ];
 
-                        redirectToUrl('listeUser.php');
+                        redirectToUrl('indexAdmin.php');
                     } else {
                         $errCompte = "Désolé, mot de passe incorrect.";
                     }

@@ -1,6 +1,12 @@
 <?php
 session_start();
-include '../dbconnect.php'; // Inclusion du fichier de connexion
+include ('../../dbconnect.php'); // Inclusion du fichier de connexion
+require_once("../fonction.php");
+
+if(!isset($_SESSION['LOGIN_ADMIN'])){
+    redirectToUrl('loginAdmin.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -10,11 +16,11 @@ include '../dbconnect.php'; // Inclusion du fichier de connexion
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="../script.js"></script>
+    <script src="../../script.js"></script>
 
 </head>
 
@@ -61,7 +67,7 @@ include '../dbconnect.php'; // Inclusion du fichier de connexion
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem atque est eligendi nobis blanditiis at sequi unde sint saepe quo veritatis accusantium expedita, dignissimos mollitia. Tenetur nihil numquam et rerum repudiandae sequi quisquam officiis quam, amet saepe exercitationem iure. Dicta fuga, quidem sit atque obcaecati tempore autem quod magni maxime asperiores voluptatibus animi itaque vel ipsam neque recusandae numquam nobis libero veritatis, iste magnam sint! Quas expedita nulla, consectetur molestiae commodi voluptatem aliquid accusamus sapiente. Id maxime dicta aperiam voluptates esse nécessité est rem? Corporis doloremque, eaque eveniet fuga vitae corrupti, sunt tenetur nisi tempore natus quas et aliquid tempora.</p>
                 </div>
             </div>
-            <div class="droite-pres"><img src="image/frame-cisse.png" alt="M. CISSE Cédric"></div>
+            <div class="droite-pres"><img src="../image/frame-cisse.png" alt="M. CISSE Cédric"></div>
         </section>
         <section>
             <div class="design">
@@ -104,7 +110,7 @@ include '../dbconnect.php'; // Inclusion du fichier de connexion
                 if ($stmt->rowCount() > 0) {
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo '<article class="news-item">';
-                        echo '<div class="news-image"><img src="image/' . htmlspecialchars($row["photoActualite"]) . '.png" alt="Actualité ' . htmlspecialchars($row["idActualite"]) . '"></div>';
+                        echo '<div class="news-image"><img src="../image/' . htmlspecialchars($row["photoActualite"]) . '.png" alt="Actualité ' . htmlspecialchars($row["idActualite"]) . '"></div>';
                         echo '<div class="news-content">';
                         echo '<h3>' . htmlspecialchars($row["titreActualite"]) . '</h3>';
                         echo '<p class="news-description">' . htmlspecialchars($row["descripActualite"]) . '</p>';
@@ -121,7 +127,7 @@ include '../dbconnect.php'; // Inclusion du fichier de connexion
 
     </main>
     <?php
-    include('footer.php');
+    include('../footer.php');
     ?>
 </body>
 

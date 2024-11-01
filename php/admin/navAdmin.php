@@ -173,38 +173,38 @@
             <!-- Bouton pour petits écrans -->
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul id="navbar">
-                <li id="logo-twin"><a href="index.php"><img src="image/logotwinnetwork.png" alt="Logo"></a></li>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="galerie.php">Galerie</a></li>
-                <li class="menu-item">
-                        <a href="message.php">Administration</a>
-                        <ul class="dropdown">
-                            <li><a href="">Etudiant</a></li>
-                            <li><a href="">Gestionnaire</a></li>
-                        </ul>
-                    </li>
-                <?php if (!isset($_SESSION['LOGIN_USER'])) : ?>
-                    <li><a href="connexion.php">Connexion</a></li>  
+                <li id="logo-twin"><a href="indexAdmin.php"><img src="../image/logotwinnetwork.png" alt="Logo"></a></li>
+                <li><a href="indexAdmin.php">Accueil</a></li>
+                <li><a href="../galerie.php">Galerie</a></li>
+                <?php if (!isset($_SESSION['LOGIN_ADMIN'])) : ?>
+                    <li><a href="loginAdmin.php">Connexion</a></li>  
                 <?php else : ?>
                     <li class="menu-item">
-                        <a href="publications.php">Publication</a>
+                        <a href="../publications.php">Publication</a>
                         <ul class="dropdown">
-                            <li><a href="publier.php">Publier</a></li>
-                            <li><a href="publications.php">Voir publication</a></li>
+                            <li><a href="../publier.php">Publier</a></li>
+                            <li><a href="../publications.php">Voir publication</a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="message.php">Discussion</a>
+                        <a href="../message.php">Discussion</a>
                         <ul class="dropdown">
-                            <li><a href="envoyezMessage.php">Privé</a></li>
-                            <li><a href="message.php">Public</a></li>
+                            <li><a href="../envoyezMessage.php">Privé</a></li>
+                            <li><a href="../message.php">Public</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Administration</a>
+                        <ul class="dropdown">
+                            <li><a href="ListeEtudiant.php">Etudiant</a></li>
+                            <li><a href="listeGestionnaire.php">Gestionnaire</a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
                         <a href="#">Mon compte</a>
                         <ul class="dropdown">
-                            <li><a href="profil.php">Mes informations</a></li>
-                            <li><a href="deconnexion.php">Déconnexion</a></li>
+                            <li><a href="#">Mes informations</a></li>
+                            <li><a href="../deconnexion.php">Déconnexion</a></li>
                         </ul>
                     </li>
                 <?php endif ?>
