@@ -31,17 +31,17 @@ include '../dbconnect.php'; // Inclusion du fichier de connexion
                 </div>
             </div>
             <div class="descriptiontitreTWIN">
-                <p>TECHNOLOGIES DU WEB ET IMAGES NUMERIQUES (TWIN)<br><hr><br>
-                    CARACTERISTIQUES DE LA FORMATION<br>
+                <p><span style="color:#007bff; font-weight:bold";>TECHNOLOGIES DU WEB ET IMAGES NUMERIQUES (TWIN)</span><br><hr><br>
+                    <span style="color:#007bff; font-weight:bold";>CARACTERISTIQUES DE LA FORMATION</span><br>
                     Formation diplômante accessible en formation initiale<br>
-                    Durée de la formation : 3 ans (6 semestres)<br>
-                    Grade : Licence (BAC +3)<br><br><hr><br>
-                    La Licence TWIN vise à former des Techniciens supérieurs dans le domaine des technologies du web et de la
+                    <span style="font-weight:bold">Durée de la formation</span> : 3 ans (6 semestres)<br>
+                    <span style="font-weight:bold";>Grade</span> : Licence (BAC +3)<br><br><hr><br>
+                    La <span style="font-weight:bold">Licence TWIN</span> vise à former des Techniciens supérieurs dans le domaine des technologies du web et de la
                     communication digitale. Elle répond aux besoins suscités par les nouveaux outils de communication qui, intégrant les
                     technologies numériques, transforment les savoirs faire des métiers de l’image et de la communication digitale</p>
             </div>
             <div class="descriptiontitreESATIC">
-                <p>L'École Supérieure Africaine des Technologies de l'Information et de la Communication (ESATIC) est un établissement d'enseignement supérieur situé à Abidjan, en Côte d'Ivoire. Fondée en 1967, l'ESATIC propose des formations spécialisées dans les domaines des technologies de l'information et de la communication. Les étudiants ont la possibilité de suivre des cursus axés sur les réseaux informatiques, la programmation, la sécurité informatique, le développement web, la gestion de projets, et bien d'autres. Grâce à son expertise reconnue, l'ESATIC offre aux étudiants une formation de qualité, leur permettant d'acquérir les compétences nécessaires pour réussir dans le secteur des TIC en Côte d'Ivoire et à l'international.
+                <p><span style="font-weight:bold">L'École Supérieure Africaine des Technologies de l'Information et de la Communication (ESATIC)</span> est un établissement d'enseignement supérieur situé à Abidjan, en Côte d'Ivoire. Fondée en 1967, l'ESATIC propose des formations spécialisées dans les domaines des technologies de l'information et de la communication. Les étudiants ont la possibilité de suivre des cursus axés sur les réseaux informatiques, la programmation, la sécurité informatique, le développement web, la gestion de projets, et bien d'autres. Grâce à son expertise reconnue, l'ESATIC offre aux étudiants une formation de qualité, leur permettant d'acquérir les compétences nécessaires pour réussir dans le secteur des TIC en Côte d'Ivoire et à l'international.
 
                     L'ESATIC se distingue par son approche pratique et orientée vers le monde professionnel. Les étudiants bénéficient de nombreux stages en entreprise, leur permettant de mettre en pratique leurs connaissances et de développer leur expérience professionnelle. De plus, l'établissement entretient des partenariats solides avec des entreprises du secteur des TIC, offrant ainsi aux étudiants des opportunités de stage et d'emploi. Grâce à son réseau d'anciens élèves, l'ESATIC facilite également l'insertion professionnelle de ses diplômés, qui sont très recherchés sur le marché du travail.</p>
             </div>
@@ -55,7 +55,7 @@ include '../dbconnect.php'; // Inclusion du fichier de connexion
                     <p>M. CISSE Cédric</p>
                 </div>
                 <div class="descrip">
-                    <p>Enseignant Chercheur à ESATIC</p>
+                    <p  style="font-weight:bold">Enseignant Chercheur à ESATIC</p>
                 </div>
                 <div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem atque est eligendi nobis blanditiis at sequi unde sint saepe quo veritatis accusantium expedita, dignissimos mollitia. Tenetur nihil numquam et rerum repudiandae sequi quisquam officiis quam, amet saepe exercitationem iure. Dicta fuga, quidem sit atque obcaecati tempore autem quod magni maxime asperiores voluptatibus animi itaque vel ipsam neque recusandae numquam nobis libero veritatis, iste magnam sint! Quas expedita nulla, consectetur molestiae commodi voluptatem aliquid accusamus sapiente. Id maxime dicta aperiam voluptates esse nécessité est rem? Corporis doloremque, eaque eveniet fuga vitae corrupti, sunt tenetur nisi tempore natus quas et aliquid tempora.</p>
