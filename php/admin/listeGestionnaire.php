@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../dbconnect.php'; // Inclusion du fichier de connexion
+include '../../dbconnect.php'; // Inclusion du fichier de connexion
 require_once("../fonction.php");
 
 if(!isset($_SESSION['LOGIN_ADMIN'])){

@@ -3,15 +3,29 @@ session_start();
 
 require_once("../dbconnect.php");  // connection bd
 
-if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
-    $userId = $_SESSION['LOGIN_USER']['user_id'];
-    $messageContent = htmlspecialchars($_POST['message']);
-
-    $insertMessage = $conn->prepare('INSERT INTO messages (userId, message, date_envoi) VALUES (?, ?, NOW())');
-    if (!$insertMessage->execute([$userId, $messageContent])) {
-        die('Erreur lors de l\'insertion du message.');
+if(isset($_SESSION['LOGIN_USER']['user_id'])){
+    if (isset($_POST['message'])) {
+        $userId = $_SESSION['LOGIN_USER']['user_id'];
+        $messageContent = htmlspecialchars($_POST['message']);
+    
+        $insertMessage = $conn->prepare('INSERT INTO messages (userId, message, date_envoi) VALUES (?, ?, NOW())');
+        if (!$insertMessage->execute([$userId, $messageContent])) {
+            die('Erreur lors de l\'insertion du message.');
+        }
     }
 }
+elseif(isset($_SESSION['LOGIN_ADMIN']['admin_id'])){
+    if (isset($_POST['message'])) {
+        $adminId = $_SESSION['LOGIN_ADMIN']['admin_id'];
+        $messageContent = htmlspecialchars($_POST['message']);
+    
+        $insertMessage = $conn->prepare('INSERT INTO messages (adminId, message, date_envoi) VALUES (?, ?, NOW())');
+        if (!$insertMessage->execute([$adminId, $messageContent])) {
+            die('Erreur lors de l\'insertion du message.');
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +81,7 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
         }
 
         /* Messages */
-        .user-message, .other-message {
+        .user-message, .admin-message, .other-message {
             border-radius: 15px;
             padding: 12px 18px;
             max-width: 30%;
@@ -76,7 +90,7 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
             position: relative;
             word-wrap: break-word;
         }
-        .user-message {
+        .user-message, .admin-message {
             background-color: #3BBEE6;
             margin-left: auto;
             text-align: right;
@@ -89,12 +103,12 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
         }
 
         /* Nom et date des messages */
-        .user-message h4, .other-message h4 {
+        .user-message h4, .admin-message .h4, .other-message h4 {
             margin: 0 0 5px;
             font-size: 1em;
             font-weight: bold;
         }
-        .user-message small, .other-message small {
+        .user-message small, .admin-message small, .other-message small {
             font-size: 0.8em;
             color: #777;
         }
@@ -119,7 +133,7 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         button {
-            background: #00796b;
+            background: #3BBEE6;
             color: white;
             border: none;
             border-radius: 10%;
@@ -139,12 +153,23 @@ if (isset($_SESSION['LOGIN_USER']['user_id']) && isset($_POST['message'])) {
         <?php
             $recupMessage = $conn->query('SELECT * FROM messages ORDER BY date_envoi DESC');
             while ($message = $recupMessage->fetch()) {
-                $formattedDate = date('d/m/Y H:i', strtotime($message['date_envoi']));
-                if ($message['userId'] == $_SESSION['LOGIN_USER']['user_id']) {
-                    echo '<div class="user-message"><h4>Vous :</h4><p>' . htmlspecialchars($message['message']) . '</p><small style="color: black;">' . $formattedDate . '</small></div>';
-                } else {
-                    echo '<div class="other-message"><h4>' . htmlspecialchars($message['pseudo']) . ' :</h4><p>' . htmlspecialchars($message['message']) . '</p><small>' . $formattedDate . '</small></div>';
+                if(isset($_SESSION['LOGIN_USER'])){
+                    $formattedDate = date('d/m/Y H:i', strtotime($message['date_envoi']));
+                    if ($message['userId'] == $_SESSION['LOGIN_USER']['user_id']) {
+                        echo '<div class="user-message"><h4>Vous :</h4><p>' . htmlspecialchars($message['message']) . '</p><small style="color: black;">' . $formattedDate . '</small></div>';
+                    } else {
+                        echo '<div class="other-message"><h4>' . htmlspecialchars($message['pseudo']) . ' :</h4><p>' . htmlspecialchars($message['message']) . '</p><small>' . $formattedDate . '</small></div>';
+                    }
                 }
+                elseif (isset($_SESSION['LOGIN_ADMIN'])){
+                    $formattedDate = date('d/m/Y H:i', strtotime($message['date_envoi']));
+                    if ($message['adminId'] == $_SESSION['LOGIN_ADMIN']['admin_id']) {
+                        echo '<div class="admin-message"><h4>Vous :</h4><p>' . htmlspecialchars($message['message']) . '</p><small style="color: black;">' . $formattedDate . '</small></div>';
+                    } else {
+                        echo '<div class="other-message"><h4>' . htmlspecialchars($message['pseudo']) . ' :</h4><p>' . htmlspecialchars($message['message']) . '</p><small>' . $formattedDate . '</small></div>';
+                    }
+                }
+               
             }
         ?>
         </section>

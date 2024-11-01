@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../dbconnect.php'; // Inclusion du fichier de connexion
+require_once("fonction.php");
 ?>
 
 <!DOCTYPE html>

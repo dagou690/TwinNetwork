@@ -114,7 +114,7 @@ $stmt = $conn->query($sql);
 </head>
 <body>
 <div class="container">
-        <h2 class="text-center" style="color: orange;">Liste des Utilisateurs</h2><br><br>
+        <h2 class="text-center" style="color: orange;">Liste des Etudiants</h2><br><br>
         
         <!-- Boutons d'ajout -->
         <div class="button-container">

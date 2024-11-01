@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../dbconnect.php'; // Inclusion du fichier de connexion
+include '../../dbconnect.php'; // Inclusion du fichier de connexion
 require_once("../fonction.php");
 
 if(!isset($_SESSION['LOGIN_ADMIN'])){
@@ -47,7 +47,7 @@ if (isset($_POST['ajouterUtilisateur'])) {
                 $erreurAjout = "Erreur lors de l'ajout de l'étudiant.";
             }
         } else {
-            $emailExiste = 'Désolé mais cette adresse a déjà un compte.';
+            $emailExiste = 'Désolé mais cette adresse email a déjà un compte.';
         }
     }
 }

@@ -174,40 +174,76 @@
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul id="navbar">
                 <li id="logo-twin"><a href="index.php"><img src="image/logotwinnetwork.png" alt="Logo"></a></li>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="galerie.php">Galerie</a></li>
-                <?php if (!isset($_SESSION['LOGIN_USER'])) : ?>
-                    <li><a href="connexion.php">Connexion</a></li>  
-                <?php else : ?>
+                <li><a href="index.php" style="text-decoration: none;">Accueil</a></li>
+                <li><a href="galerie.php" style="text-decoration: none;">Galerie</a></li>
+                <?php if (!isset($_SESSION['LOGIN_USER']) && !isset($_SESSION['LOGIN_ADMIN'])) : ?>
                     <li class="menu-item">
-                        <a href="publications.php">Publication</a>
+                        <a href="connexion.php" style="text-decoration: none;">Se connecter</a>
                         <ul class="dropdown">
-                            <li><a href="publier.php">Publier</a></li>
-                            <li><a href="publications.php">Voir publication</a></li>
+                            <li><a href="connexion.php" style="text-decoration: none;">Etudiant</a></li>
+                            <li><a href="admin/loginAdmin.php" style="text-decoration: none;">Administrateur</a></li>
                         </ul>
                     </li>
+                     
+                <?php else :
+                     if (isset($_SESSION['LOGIN_ADMIN'])) : ?>
                     <li class="menu-item">
-                        <a href="message.php">Discussion</a>
+                        <a href="publications.php" style="text-decoration: none;">Publication</a>
                         <ul class="dropdown">
-                            <li><a href="envoyezMessage.php">Privé</a></li>
-                            <li><a href="message.php">Public</a></li>
+                            <li><a href="publications.php" style="text-decoration: none;">Voir publication</a></li>
                         </ul>
                     </li>
+                    <?php else : ?>
                     <li class="menu-item">
-                        <a href="#">Administration</a>
+                        <a href="publications.php" style="text-decoration: none;">Publication</a>
                         <ul class="dropdown">
-                            <li><a href="admin/ListeEtudiant.php">Etudiant</a></li>
-                            <li><a href="admin/listeGestionnaire.php">Gestionnaire</a></li>
+                            <li><a href="publier.php" style="text-decoration: none;">Publier</a></li>
+                            <li><a href="publications.php" style="text-decoration: none;">Voir publication</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item">
-                        <a href="#">Mon compte</a>
-                        <ul class="dropdown">
-                            <li><a href="profil.php">Mes informations</a></li>
-                            <li><a href="deconnexion.php">Déconnexion</a></li>
-                        </ul>
-                    </li>
+                    <?php endif ?>
                 <?php endif ?>
+                <?php if (isset($_SESSION['LOGIN_ADMIN'])) : ?>
+                    <li class="menu-item">
+                        <a href="message.php" style="text-decoration: none;">Discussion</a>
+                        <ul class="dropdown">
+                            <li><a href="message.php" style="text-decoration: none;">Public</a></li>
+                        </ul>
+                    </li>
+                <?php elseif (isset($_SESSION['LOGIN_USER'])):{ ?>
+                    <li class="menu-item">
+                        <a href="message.php" style="text-decoration: none;">Discussion</a>
+                        <ul class="dropdown">
+                            <li><a href="envoyezMessage.php" style="text-decoration: none;">Privé</a></li>
+                            <li><a href="message.php" style="text-decoration: none;">Public</a></li>
+                        </ul>
+                    </li>
+                
+                <?php } 
+                endif ?>
+
+                    <?php if(isset($_SESSION['LOGIN_ADMIN'])){ ?>
+                        <li class="menu-item">
+                            <a href="#" style="text-decoration: none;">Administration</a>
+                            <ul class="dropdown">
+                                <li><a href="admin/ListeEtudiant.php" style="text-decoration: none;">Etudiant</a></li>
+                                <li><a href="admin/listeGestionnaire.php" style="text-decoration: none;">Gestionnaire</a></li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                
+                    <?php if (isset($_SESSION['LOGIN_USER']) OR isset($_SESSION['LOGIN_ADMIN'])) { ?>
+                    <li class="menu-item">
+                        <a href="#" style="text-decoration: none;">Mon compte</a>
+                        <ul class="dropdown">
+                            <li><a href="profil.php" style="text-decoration: none;">Mes informations</a></li>
+                            <li><a href="deconnexion.php" style="text-decoration: none;">Déconnexion</a></li>
+                        </ul>
+                    </li>
+                    <?php
+                    }
+                    ?>
+               
             </ul>
         </nav>
     </header>

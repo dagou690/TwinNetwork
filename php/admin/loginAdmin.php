@@ -28,7 +28,7 @@ if (isset($postData['connexion'])) {
                             'prenom' => $administrateur['prenom']
                         ];
 
-                        redirectToUrl('indexAdmin.php');
+                        redirectToUrl('../index.php');
                     } else {
                         $errCompte = "Désolé, mot de passe incorrect.";
                     }
@@ -52,7 +52,6 @@ if (isset($postData['connexion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/connexion.css">
     <title>Connexion Admin</title>
     <style>
         /* Styles améliorés pour l'interface administrateur */
@@ -67,6 +66,7 @@ if (isset($postData['connexion'])) {
         }
         
         .gdiv {
+        
             background-color: #14213d;
             border-radius: 12px;
             padding: 20px;
@@ -155,10 +155,17 @@ if (isset($postData['connexion'])) {
             margin-bottom: 15px;
             font-weight: bold;
         }
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-left: 37%;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="gdiv">
+        <img class="logo" src="../image/logo.png" alt="logo">
         <div class="connexion">Connexion Administrateur</div>
 
         <?php if (isset($errCompte)) : ?>
