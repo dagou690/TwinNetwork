@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 01 nov. 2024 à 17:49
+-- Généré le : ven. 01 nov. 2024 à 19:52
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -40,15 +40,10 @@ CREATE TABLE `actualite` (
 --
 
 INSERT INTO `actualite` (`idActualite`, `photoActualite`, `titreActualite`, `descripActualite`, `dateActualite`) VALUES
-(1, 'actualite-02', 'Lancement du nouveau programme TWIN', 'L\'ESATIC inaugure son programme innovant en Technologies Web et Intelligence artificielle, ouvrant de nouvelles perspectives pour les étudiants en informatique.', '0000-00-00'),
-(2, 'actualite-02', 'Lancement du nouveau programme TWIN', 'L\'ESATIC inaugure son programme innovant en Technologies Web et Intelligence artificielle, ouvrant de nouvelles perspectives pour les étudiants en informatique.', '0000-00-00'),
+(1, 'actualite-02', 'Lancement du nouveau programme TWIN', 'L\'ESATIC inaugure son programme innovant en Technologies Web et Intelligence artificielle, ouvrant de nouvelles perspectives pour les étudiants en informatique.', '2024-11-12'),
+(2, 'actualite-02', 'Lancement du nouveau programme TWIN', 'L\'ESATIC inaugure son programme innovant en Technologies Web et Intelligence artificielle, ouvrant de nouvelles perspectives pour les étudiants en informatique.', '2024-11-29'),
 (3, 'actualite-02', 'Lancement du nouveau programme TWIN', 'L\'ESATIC inaugure son programme innovant en Technologies Web et Intelligence artificielle, ouvrant de nouvelles perspectives pour les étudiants en informatique.', '2024-10-17'),
-(4, 'actualite-02', 'Lancement du nouveau programme TWIN', 'L\'ESATIC inaugure son programme innovant en Technologies Web et Intelligence artificielle, ouvrant de nouvelles perspectives pour les étudiants en informatique.', '2024-10-17'),
-(5, 'image/actualite-02.png', 'Poulet ', 'Poulet rappeur', '2024-10-17'),
-(6, NULL, 'Poulet ', 'Poulet rappeur', '2024-10-17'),
-(7, 'actualite-02.png', 'Cabri', 'C\'est le cabri', '2024-10-18'),
-(8, 'actualite-02', 'Cabri', 'Oui !!!', '2024-10-18'),
-(9, 'actualite-02', 'Cabri', 'loehugigbssvcejgu', '2024-10-18');
+(4, 'actualite-02', 'Lancement du nouveau programme TWIN', 'L\'ESATIC inaugure son programme innovant en Technologies Web et Intelligence artificielle, ouvrant de nouvelles perspectives pour les étudiants en informatique.', '2024-10-17');
 
 -- --------------------------------------------------------
 
@@ -65,6 +60,13 @@ CREATE TABLE `admin` (
   `telephone` varchar(20) DEFAULT NULL,
   `date_creation` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`idAdmin`, `nom`, `prenom`, `email`, `motPasse`, `telephone`, `date_creation`) VALUES
+(1, 'KOUADIO', 'Josué Noel Yao', 'josue.kouadio@outlook.fr', '1234', '0153099634', '2024-11-01 18:39:31');
 
 -- --------------------------------------------------------
 
@@ -138,10 +140,9 @@ CREATE TABLE `etuannee` (
 --
 
 INSERT INTO `etuannee` (`idEtuAnnee`, `photoEtuAnnee`, `nomEtuAnnee`, `prenomEtuAnnee`, `mgaEtuAnnee`) VALUES
-(1, 'student-fort-02 twin 3-02', 'KOUADIO', 'Josue', '18'),
-(2, 'student-fort-02 twin2-02', 'KOUADIO', 'JOSUE NOEL YAO', '20'),
-(3, '', NULL, NULL, NULL),
-(4, 'student-fort-02 twin2-02', 'KOUADIO', 'JOSUE NOEL YAO', '20'),
+(1, 'student-fort-02 twin 3-02', 'KOUADIO', 'Josué', '18'),
+(2, 'student-fort-02 twin2-02', 'KOUADIO', 'Josué', '20'),
+(4, 'student-fort-02 twin2-02', 'KOUADIO', 'Josué', '20'),
 (5, 'student-fort-02 twin 3-02', 'KOUADIO', 'Josué', '13');
 
 -- --------------------------------------------------------
@@ -184,18 +185,18 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `pseudo`, `message`, `userId`, `date_envoi`) VALUES
-(0, '', 'salut', 2, '2024-10-18 15:34:19'),
-(0, '', 'Salut  !', 1, '2024-10-18 16:30:37'),
-(0, '', 'Slt', 1, '2024-11-01 08:35:06'),
-(0, '', 'cc', 1, '2024-11-01 08:35:17'),
-(0, '', 'C', 1, '2024-11-01 08:36:42'),
-(0, '', 'C', 1, '2024-11-01 08:40:24'),
-(0, '', 'CC', 1, '2024-11-01 08:40:31'),
-(0, '', 'CC', 1, '2024-11-01 08:40:42'),
-(0, '', 'CC', 1, '2024-11-01 08:41:35'),
-(0, '', 'CC', 1, '2024-11-01 08:42:15'),
-(0, '', 'ccqtehf', 3, '2024-11-01 08:48:54'),
-(0, '', 'qsfx', 3, '2024-11-01 09:02:48');
+(1, '', 'salut', 2, '2024-10-18 15:34:19'),
+(2, '', 'Salut  !', 1, '2024-10-18 16:30:37'),
+(3, '', 'Slt', 1, '2024-11-01 08:35:06'),
+(4, '', 'cc', 1, '2024-11-01 08:35:17'),
+(5, '', 'C', 1, '2024-11-01 08:36:42'),
+(6, '', 'C', 1, '2024-11-01 08:40:24'),
+(7, '', 'CC', 1, '2024-11-01 08:40:31'),
+(8, '', 'CC', 1, '2024-11-01 08:40:42'),
+(9, '', 'CC', 1, '2024-11-01 08:41:35'),
+(10, '', 'CC', 1, '2024-11-01 08:42:15'),
+(11, '', 'ccqtehf', 3, '2024-11-01 08:48:54'),
+(12, '', 'qsfx', 3, '2024-11-01 09:02:48');
 
 -- --------------------------------------------------------
 
@@ -217,17 +218,17 @@ CREATE TABLE `messagesprive` (
 --
 
 INSERT INTO `messagesprive` (`id`, `pseudo`, `message`, `userId`, `date_envoi`, `recipientId`) VALUES
-(0, '', 'bonsoir', 2, '2024-10-18 15:29:26', 1),
-(0, '', 'Ca va toi ?', 1, '2024-10-18 16:31:27', 2),
-(0, '', 'Hello ', 1, '2024-10-18 16:31:38', 3),
-(0, '', 'cc', 1, '2024-11-01 08:43:38', 2),
-(0, '', 'cc', 3, '2024-11-01 08:46:15', 1),
-(0, '', 'oui oui', 1, '2024-11-01 08:47:47', 3),
-(0, '', 'dcvv', 1, '2024-11-01 10:21:46', 2),
-(0, '', 'cbxvcb ', 1, '2024-11-01 10:21:48', 2),
-(0, '', 'ghbjn,;;', 1, '2024-11-01 10:21:50', 2),
-(0, '', 'SL', 1, '2024-11-01 10:33:48', 4),
-(0, '', 'Ca va toi ?', 1, '2024-11-01 10:57:44', 2);
+(1, '', 'bonsoir', 2, '2024-10-18 15:29:26', 1),
+(2, '', 'Ca va toi ?', 1, '2024-10-18 16:31:27', 2),
+(3, '', 'Hello ', 1, '2024-10-18 16:31:38', 3),
+(4, '', 'cc', 1, '2024-11-01 08:43:38', 2),
+(5, '', 'cc', 3, '2024-11-01 08:46:15', 1),
+(6, '', 'oui oui', 1, '2024-11-01 08:47:47', 3),
+(7, '', 'dcvv', 1, '2024-11-01 10:21:46', 2),
+(8, '', 'cbxvcb ', 1, '2024-11-01 10:21:48', 2),
+(9, '', 'ghbjn,;;', 1, '2024-11-01 10:21:50', 2),
+(10, '', 'SL', 1, '2024-11-01 10:33:48', 4),
+(11, '', 'Ca va toi ?', 1, '2024-11-01 10:57:44', 2);
 
 -- --------------------------------------------------------
 
@@ -299,6 +300,12 @@ ALTER TABLE `actualite`
   ADD PRIMARY KEY (`idActualite`);
 
 --
+-- Index pour la table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`idAdmin`);
+
+--
 -- Index pour la table `alumni`
 --
 ALTER TABLE `alumni`
@@ -325,6 +332,18 @@ ALTER TABLE `gestionnaire`
   ADD PRIMARY KEY (`idGest`);
 
 --
+-- Index pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `messagesprive`
+--
+ALTER TABLE `messagesprive`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `publications`
 --
 ALTER TABLE `publications`
@@ -346,6 +365,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `actualite`
   MODIFY `idActualite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT pour la table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `alumni`
@@ -370,6 +395,18 @@ ALTER TABLE `etuannee`
 --
 ALTER TABLE `gestionnaire`
   MODIFY `idGest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `messagesprive`
+--
+ALTER TABLE `messagesprive`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `publications`
